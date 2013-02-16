@@ -5,8 +5,15 @@
 	Interaction namespace is used for the utilities useful for handling user interaction with the application
 	We will handle events that occur here and will properly offset them to other modules etc in other namespaces
 	We will handle menu options etc here	
-		
+
 */
+
+#include <stdlib.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GLUT/glut.h>
+#include <pic.h>
+#include "application_state.hpp"
 
 namespace interaction {
 
@@ -35,7 +42,7 @@ namespace interaction {
 
 	
 	// basic menu functionality
-	void menufunc(int value)
+	void menufunc(int value);
 }
 
 #endif

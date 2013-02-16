@@ -10,6 +10,7 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
+#include "application_state.hpp"
 
 
 namespace image {

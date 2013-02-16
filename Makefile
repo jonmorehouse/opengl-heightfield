@@ -23,14 +23,15 @@ COMPILERFLAGS = -O3 $(INCLUDE)
 PROGRAM = current
 
 # compile the modules into our main function
-all: modules.o src/main.cpp 
+all: src/main.cpp 
 
-	$(COMPILER) $(COMPILERFLAGS) -o $(PROGRAM) src/main.cpp modules.o $(LIBRARIES)
+	$(COMPILER) $(COMPILERFLAGS) -o $(PROGRAM) src/main.cpp src/modules/*.cpp $(LIBRARIES)
 
+# currently not being used -- deciding to use a different programatic structure for now
 # compile our modules object
 modules.o: src/modules/*.cpp include/modules/*.hpp 
 
-	$(COMPILER) $(COMPILERFLAGS) -c -o src/modules.o src/modules/*.cpp $(LIBRARIES)
+	$(COMPILER) $(COMPILERFLAGS) -c -o src/modules.o src/modules.cpp $(LIBRARIES)
 
 # clean up after ourselves
 clean:

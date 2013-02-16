@@ -1,6 +1,12 @@
 #include "modules/interaction.hpp"
 
+// enforce the use of the application state data in these functions
+using namespace application_state;
+
 namespace interaction {
+
+	// initialize the control state etc
+	CONTROLSTATE g_ControlState;
 
 	void mouseidle(int x, int y) {
 	  g_vMousePos[0] = x;

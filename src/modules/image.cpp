@@ -1,5 +1,7 @@
 #include "modules/image.hpp"
 
+using namespace application_state;
+
 /* Write a screenshot to the specified filename */
 namespace image {
 
