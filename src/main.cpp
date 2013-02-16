@@ -10,10 +10,18 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
-
 /* see <your pic directory>/pic.h for type Pic */
 Pic * g_pHeightData;
 
+// declare our local variables for this application
+float g_vLandRotate[3] = {0.0, 0.0, 0.0};
+float g_vLandTranslate[3] = {0.0, 0.0, 0.0};
+float g_vLandScale[3] = {0.0, 0.0, 0.0};
+
+// include our application namespaces
+#include "modules/interaction.hpp"
+#include "modules/image.hpp"
+#include "modules/application.hpp"
 
 void doIdle() {
   /* do some stuff... */

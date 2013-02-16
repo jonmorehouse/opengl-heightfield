@@ -7,7 +7,9 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
-#include "application_state.hpp"
+extern float g_vLandRotate[3];
+extern float g_vLandTranslate[3];
+extern float g_vLandScale[3];
 
 namespace application {
 

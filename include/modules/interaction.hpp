@@ -13,7 +13,10 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
-#include "application_state.hpp"
+
+extern float g_vLandRotate[3];
+extern float g_vLandTranslate[3];
+extern float g_vLandScale[3];
 
 namespace interaction {
 
@@ -21,14 +24,11 @@ namespace interaction {
 	typedef enum {ROTATE, TRANSLATE, SCALE}	CONTROLSTATE;
 	
 	// initialize some integers for various menu options etc
-	int g_iMenuId,
-		// store the mouse position (x,y) as [x,y]
-		g_vMousePos[2] = {0,0},	
-		// store the mouse buttons each time to determine what is stored etc
-		g_iLeftMouseButton = 0,
-		g_iMiddleMouseButton = 0,
-		g_iRightMouseButton = 0;
-			
+	extern int g_iMenuId,
+		g_vMousePos[2],
+		g_iLeftMouseButton,
+		g_iMiddleMouseButton,
+		g_iRightMouseButton;
 
 	// function definitions that will be used here
 	void mouseidle(int x, int y); 

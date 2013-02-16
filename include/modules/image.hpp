@@ -10,8 +10,11 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
-#include "application_state.hpp"
 
+// initialize the global data from the main.cpp files etc
+extern float g_vLandRotate[3];
+extern float g_vLandTranslate[3];
+extern float g_vLandScale[3];
 
 namespace image {
 

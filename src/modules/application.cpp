@@ -1,7 +1,5 @@
 #include "modules/application.hpp"
 
-using namespace application_state;
-
 namespace application {
 
 	void init() {
