@@ -1,3 +1,4 @@
 *.o
 images/
 *.cpp~
+resources/
