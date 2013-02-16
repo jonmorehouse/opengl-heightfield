@@ -9,7 +9,9 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
+#include "modules/interaction.hpp"
 
+  
 int g_iMenuId;
 
 int g_vMousePos[2] = {0, 0};
