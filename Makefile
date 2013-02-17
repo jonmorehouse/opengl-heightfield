@@ -1,8 +1,6 @@
 # Makefile 
 # CSCI 480
 # Assignment 1
-
-
 # makefile reformatted and rewritten for current assignment
 # could be more dynamic in the future, but for now want to have easy readability to help us ensure how the project is working / compiling together
 
@@ -32,6 +30,12 @@ all: src/main.cpp
 modules.o: src/modules/*.cpp include/modules/*.hpp 
 
 	$(COMPILER) $(COMPILERFLAGS) -c -o src/modules.o src/modules.cpp $(LIBRARIES)
+
+
+debug: src/main.cpp 
+
+	$(COMPILER) $(COMPILERFLAGS) -g -o $(PROGRAM) src/main.cpp src/modules/*.cpp $(LIBRARIES)
+
 
 # clean up after ourselves
 clean:

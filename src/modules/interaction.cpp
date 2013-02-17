@@ -103,4 +103,17 @@ namespace interaction {
 	      break;
 	  }
 	}
+
+
+	// initialize all the menu functionality
+	void init() {
+
+		g_iMenuId = glutCreateMenu(menufunc);
+		glutSetMenu(g_iMenuId);
+		glutAddMenuEntry("Quit", 0);
+		glutAttachMenu(GLUT_RIGHT_BUTTON);
+	}
+
+
+
 }

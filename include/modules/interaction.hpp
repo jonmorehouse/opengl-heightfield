@@ -39,10 +39,13 @@ namespace interaction {
 	// implement a basic mousedrag listener
 	// convert mouse drags into information about rotation / translation / scaling
 	void mousedrag(int x, int y); 
-
 	
 	// basic menu functionality
 	void menufunc(int value);
+
+	// initialize the menu
+	void init();//initialize the menu
+
 }
 
 #endif

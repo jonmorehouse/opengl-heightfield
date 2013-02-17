@@ -13,7 +13,11 @@ extern float g_vLandScale[3];
 
 namespace application {
 
+	// initialize image and basics of the application here
 	void init();	
+	// idle function called when nothing happening on machine
+	void idle();
+	// display is what is shown each time
 	void display();
 }
 

@@ -9,6 +9,15 @@ namespace application {
 
 	}
 
+	// implement idle function -- responsible for working with the image on a consistent basis to continually ensure its integrity
+	void idle() {
+
+		// force refresh of the screen
+		glutPostRedisplay();	
+
+	}	
+
+
 	// display is for drawing out the elements using our scaled frame etc
 	void display() {
 
