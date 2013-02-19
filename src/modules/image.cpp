@@ -3,31 +3,35 @@
 /* Write a screenshot to the specified filename */
 namespace image {
 
-   void saveScreenshot (char *filename) {
-  int i, j;
-  Pic *in = NULL;
+  void saveScreenshot (char * filename) {
 
-  if (filename == NULL)
-    return;
+    int x, y;
+    Pic * image = NULL;
 
-  /* Allocate a picture buffer */
-  in = pic_alloc(640, 480, 3, NULL);
+    // ensure that our filename is given
+    if (filename == NULL) return;
 
-  printf("File to save to: %s\n", filename);
+    // create a picture buffer -- for storing the image pixels etc
+    // allocate a picture object the size of our screen
+    // pic_alloc(int nx, int ny, int bpp, pic) -- will then return our image that we need
+    image = pic_alloc(640, 480, 3, NULL);
 
-  for (i=479; i>=0; i--) {
-    glReadPixels(0, 479-i, 640, 1, GL_RGB, GL_UNSIGNED_BYTE,
-                 &in->pix[i*in->nx*in->bpp]);
+    printf("File to save to: %s\n", filename);
+    // now loop through the entire elements
+
+    // loop from the top left down to the bottom right for creating the pixels 
+    // we want to only grab one row at at time starting from the top
+    for (y = 479; y >= 0; y--) {
+
+      // grab the image data, one row at a time from top to bottom
+      // glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+      // draw a row at a time
+      glReadPixels(0, 479-y, 640, 1, GL_RGB, GL_UNSIGNED_BYTE, &image->pix[y*image->nx*image->bpp]);
+
+    }
+
+
   }
-
-  if (jpeg_write(filename, in))
-    printf("File saved Successfully\n");
-  else
-    printf("Error in Saving\n");
-
-  pic_free(in);
-}  
-
 
 
 

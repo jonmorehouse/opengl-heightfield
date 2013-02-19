@@ -7,6 +7,7 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
+extern Pic * currentImage;
 extern float g_vLandRotate[3];
 extern float g_vLandTranslate[3];
 extern float g_vLandScale[3];

@@ -52,6 +52,7 @@ namespace interaction {
 
 	// mouse drag changes mouse drags into information about scaling / rotation etc
 	void mousedrag(int x, int y) {
+
 	  int vMouseDelta[2] = {x-g_vMousePos[0], y-g_vMousePos[1]};
 	  
 	  switch (g_ControlState)

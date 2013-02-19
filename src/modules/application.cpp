@@ -4,17 +4,19 @@ namespace application {
 
 	void init() {
 
-		// clear gl colors on the screen to black
-		glClearColor(0.0, 0.0, 0.0, 0.0);
 
+		idle();		
 	}
 
 	// implement idle function -- responsible for working with the image on a consistent basis to continually ensure its integrity
 	void idle() {
 
-		// force refresh of the screen
-		glutPostRedisplay();	
+		// initialize the most basic image
+		for (int y = currentImage->ny; y >= 0; y--) {
 
+			// draw out each row of pixels
+			glDrawPixels(currentImage->nx, currentImage->ny, GL_RGB, GL_UNSIGNED_BYTE, currentImage->pix);	
+		}	
 	}	
 
 
@@ -23,19 +25,12 @@ namespace application {
 
 		// rotate, scaling and translation should take place before this code in the future
 		// draw a quick cube around the origin of the screen
-		glBegin(GL_POLYGON);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+		glClearColor(000.0, 0.0, 0.0, 1.0);
 
-		glColor3f(1.0, 1.0, 1.0);
-		glVertex3f(-0.5, -0.5, 0.0);
-		glColor3f(0.0, 0.0, 1.0);
-		glVertex3f(-0.5, 0.5, 0.0);
-		glColor3f(0.0, 0.0, 0.0);
-		glVertex3f(0.5, 0.5, 0.0);
-		glColor3f(1.0, 1.0, 0.0);
-		glVertex3f(0.5, -0.5, 0.0);
+		init();
 
-		glEnd();
-
+		glutSwapBuffers();
 	}
 
 }

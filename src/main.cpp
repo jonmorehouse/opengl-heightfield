@@ -46,7 +46,7 @@ int main (int argc, char ** argv) {
   glutInit(&argc, argv);
 
   // initialize double buffer element
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
 
   // set up the window size 
   glutInitWindowSize(windowWidth, windowHeight);
@@ -59,12 +59,17 @@ int main (int argc, char ** argv) {
   // set up the main display function
   glutDisplayFunc(application::display);
 
+  // set the various callbacks for the interaction with opengl
+  glutIdleFunc(application::display);
+  glutMotionFunc(interaction::mousedrag);
+  glutPassiveMotionFunc(interaction::mouseidle);
+  glutMouseFunc(interaction::mousebutton);
+
   // allow the user to quit using the right mouse button menu
   interaction::init();//initialize the interaction
+  application::init();//this is responsible for initializing the 
 
   // now enter the main glut loop 
   glutMainLoop();
-
-  
 
 }

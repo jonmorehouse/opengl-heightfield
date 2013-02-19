@@ -14,6 +14,7 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
+extern Pic * currentImage;
 extern float g_vLandRotate[3];
 extern float g_vLandTranslate[3];
 extern float g_vLandScale[3];
@@ -30,7 +31,7 @@ namespace interaction {
 		g_iMiddleMouseButton,
 		g_iRightMouseButton;
 
-	// function definitions that will be used here
+	// mouse idle is useful for when the mouse is just sitting somewhere
 	void mouseidle(int x, int y); 
 
 	// mouse button will be used to handle button clicks from glut
