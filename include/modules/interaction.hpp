@@ -16,9 +16,9 @@
 #include "classes/height_field.hpp"
 
 extern HeightField * heightField;//set up and initialized in our main init function
-extern float g_vLandRotate[3];// set up and initialized in main file
-extern float g_vLandTranslate[3];// set up and initialized in main file
-extern float g_vLandScale[3];// set up and initialized in main file
+extern float rotation[3];// set up and initialized in main file
+extern float translation[3];// set up and initialized in main file
+extern float scale[3];// set up and initialized in main file
 
 namespace interaction {
 
@@ -44,6 +44,9 @@ namespace interaction {
 	
 	// basic menu functionality
 	void menufunc(int value);
+
+	// enable the keypress functionality etc
+	void keyPress(int key, int x, int y);
 
 	// initialize the menu
 	void init();//initialize the menu

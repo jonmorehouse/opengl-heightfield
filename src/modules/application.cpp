@@ -10,11 +10,6 @@ namespace application {
 	// implement idle function -- responsible for working with the image on a consistent basis to continually ensure its integrity
 	void idle() {
 
-
-		g_vLandRotate[0] += 2.0;
-		// g_vLandRotate[1] += 1.0;	
-		// g_vLandRotate[2] += 2.0;
-
 		glutPostRedisplay();//run the display segment again to update any changes that we may have
 	}	
 
@@ -27,28 +22,31 @@ namespace application {
 		// draw a quick cube around the origin of the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 		// clear the colors and make the background black
-		glClearColor(0.0, 0.0, 0.0, 1.0);
+		glClearColor(0.0,0.0,0.0, 1.0);
 
 
-		// draw out each of the polygons needed for this object
-		drawPolygons();//loops through and draws out each polygons		
 
 
 		// reset the matrix to a default state before rotating scaling etc
 		glPushMatrix();
-		glLoadIdentity();
-		
-		// reset the rotation of all axes to 0,0,0
-		glTranslatef(0.0,0.0,0.0);
-		glRotatef(20.0, 1.0, 0.0, 0.0);
-		glRotatef(20.0, 0.0, 1.0, 0.0);
-		glRotatef(20.0, 0.0, 0.0, 1.0);
 
-		glScalef(2.0, 2.0, 2.0);
+			// clear teh screen
+			glLoadIdentity();
+			
+			// reset the rotation of all axes to 0,0,0
+			glTranslatef(translation[0], translation[1], translation[2]);
 
-		// now lets draw our image
-		glRasterPos2i(0,0);
-		
+			// set up the proper rotations
+			glRotatef(rotation[0], 1.0, 0.0,0.0);
+			glRotatef(rotation[1], 0.0, 1.0,0.0);
+			glRotatef(rotation[2], 0.0, 0.0,1.0);
+
+			// set up the proper scale each time!
+			glScalef(scale[0], scale[1], scale[2]);
+
+			// draw out each of the polygons needed for this object
+			// drawPolygons();//loops through and draws out each polygons		
+			drawPolygon(2,2);
 
 		glPopMatrix();
 		// swap the buffers and bring the second one out from hiding
@@ -70,13 +68,64 @@ namespace application {
 	// draw polygon assumes that there is a left point, and a right point!
 	void drawPolygon(unsigned int x, unsigned int y) {
 
-		glBegin(GL_POLYGON);
+		GLfloat color[3] = {1.0,1.0, 1.0};
+		// need to add in the individual vertices for this object
+			
+		//Multi-colored side - FRONT
+		  glBegin(GL_POLYGON);
+		 
+		  glColor3f( 1.0, 0.0, 0.0 );     glVertex3f(  0.5, -0.5, -0.5 );      // P1 is red
+		  glColor3f( 0.0, 1.0, 0.0 );     glVertex3f(  0.5,  0.5, -0.5 );      // P2 is green
+		  glColor3f( 0.0, 0.0, 1.0 );     glVertex3f( -0.5,  0.5, -0.5 );      // P3 is blue
+		  glColor3f( 1.0, 0.0, 1.0 );     glVertex3f( -0.5, -0.5, -0.5 );      // P4 is purple
+		 
+		  glEnd();
+		 
+		  // White side - BACK
+		  glBegin(GL_POLYGON);
+		  glColor3f(   1.0,  1.0, 1.0 );
+		  glVertex3f(  0.5, -0.5, 0.5 );
+		  glVertex3f(  0.5,  0.5, 0.5 );
+		  glVertex3f( -0.5,  0.5, 0.5 );
+		  glVertex3f( -0.5, -0.5, 0.5 );
+		  glEnd();
+		 
+		  // Purple side - RIGHT
+		  glBegin(GL_POLYGON);
+		  glColor3f(  1.0,  0.0,  1.0 );
+		  glVertex3f( 0.5, -0.5, -0.5 );
+		  glVertex3f( 0.5,  0.5, -0.5 );
+		  glVertex3f( 0.5,  0.5,  0.5 );
+		  glVertex3f( 0.5, -0.5,  0.5 );
+		  glEnd();
+		 
+		  // Green side - LEFT
+		  glBegin(GL_POLYGON);
+		  glColor3f(   0.0,  1.0,  0.0 );
+		  glVertex3f( -0.5, -0.5,  0.5 );
+		  glVertex3f( -0.5,  0.5,  0.5 );
+		  glVertex3f( -0.5,  0.5, -0.5 );
+		  glVertex3f( -0.5, -0.5, -0.5 );
+		  glEnd();
+		 
+		  // Blue side - TOP
+		  glBegin(GL_POLYGON);
+		  glColor3f(   0.0,  0.0,  1.0 );
+		  glVertex3f(  0.5,  0.5,  0.5 );
+		  glVertex3f(  0.5,  0.5, -0.5 );
+		  glVertex3f( -0.5,  0.5, -0.5 );
+		  glVertex3f( -0.5,  0.5,  0.5 );
+		  glEnd();
+		 
+		  // Red side - BOTTOM
+		  glBegin(GL_POLYGON);
+		  glColor3f(   1.0,  0.0,  0.0 );
+		  glVertex3f(  0.5, -0.5, -0.5 );
+		  glVertex3f(  0.5, -0.5,  0.5 );
+		  glVertex3f( -0.5, -0.5,  0.5 );
+		  glVertex3f( -0.5, -0.5, -0.5 );
+		  glEnd();
 
-		// glVertex3fv(glFloat);
-
-
-
-		glEnd();
 	}
 
 }

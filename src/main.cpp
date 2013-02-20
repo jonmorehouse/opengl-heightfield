@@ -5,9 +5,9 @@
 #include <pic.h>
 
 // frame variables
-float g_vLandRotate[3] = {1.0, 0.0, 0.0}, 
-  g_vLandTranslate[3] = {0.0, 0.0, 0.0},
-  g_vLandScale[3] = {0.0, 0.0, 0.0};
+float rotation[3] = {1.0, 0.0, 0.0}, 
+  translation[3] = {0.0, 0.0, 0.0},
+  scale[3] = {1.0, 1.0, 1.0};
 
 // window variables etc
 int windowHeight = 600, 
@@ -96,15 +96,18 @@ int main (int argc, char ** argv) {
 
   // set the various callbacks for the interaction with opengl
   glutIdleFunc(application::idle);
+  glutSpecialFunc(interaction::keyPress);//enable the keypress handling
+
   // glutMotionFunc(interaction::mousedrag);
   // glutPassiveMotionFunc(interaction::mouseidle);
   // glutMouseFunc(interaction::mousebutton);
 
+  // enable 3d buffering / z-buffer
   glEnable(GL_DEPTH_TEST);
   // now enter the main glut loop 
   glutMainLoop();
 
-  // 
+     
   // image::saveScreenshot("./test.jpf");
 
 }

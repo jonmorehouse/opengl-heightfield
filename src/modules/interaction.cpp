@@ -60,34 +60,34 @@ namespace interaction {
 	    case TRANSLATE:  
 	      if (g_iLeftMouseButton)
 	      {
-	        g_vLandTranslate[0] += vMouseDelta[0]*0.01;
-	        g_vLandTranslate[1] -= vMouseDelta[1]*0.01;
+	        translation[0] += vMouseDelta[0]*0.01;
+			translation[1] -= vMouseDelta[1]*0.01;
 	      }
 	      if (g_iMiddleMouseButton)
 	      {
-	        g_vLandTranslate[2] += vMouseDelta[1]*0.01;
+			translation[2] += vMouseDelta[1]*0.01;
 	      }
 	      break;
 	    case ROTATE:
 	      if (g_iLeftMouseButton)
 	      {
-	        g_vLandRotate[0] += vMouseDelta[1];
-	        g_vLandRotate[1] += vMouseDelta[0];
+	        rotation[0] += vMouseDelta[1];
+	        rotation[1] += vMouseDelta[0];
 	      }
 	      if (g_iMiddleMouseButton)
 	      {
-	        g_vLandRotate[2] += vMouseDelta[1];
+	        rotation[2] += vMouseDelta[1];
 	      }
 	      break;
 	    case SCALE:
 	      if (g_iLeftMouseButton)
 	      {
-	        g_vLandScale[0] *= 1.0+vMouseDelta[0]*0.01;
-	        g_vLandScale[1] *= 1.0-vMouseDelta[1]*0.01;
+	        scale[0] *= 1.0+vMouseDelta[0]*0.01;
+	        scale[1] *= 1.0-vMouseDelta[1]*0.01;
 	      }
 	      if (g_iMiddleMouseButton)
 	      {
-	        g_vLandScale[2] *= 1.0-vMouseDelta[1]*0.01;
+	        scale[2] *= 1.0-vMouseDelta[1]*0.01;
 	      }
 	      break;
 	  }
@@ -115,6 +115,22 @@ namespace interaction {
 		glutAttachMenu(GLUT_RIGHT_BUTTON);
 	}
 
+	void keyPress(int key, int x, int y) {
 
+		if (key == GLUT_KEY_LEFT)
+			rotation[0] -= 2.0;
+
+		if (key == GLUT_KEY_RIGHT)
+			rotation[0] += 2.0;
+
+		if (key == GLUT_KEY_UP) 
+			rotation[1] += 2.0;
+
+		if (key == GLUT_KEY_DOWN)
+			rotation[1] -= 2.0;
+
+		glutPostRedisplay();
+		
+	}
 
 }
