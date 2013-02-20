@@ -134,5 +134,4 @@ namespace interaction {
 		glutPostRedisplay();
 		
 	}
-
 }

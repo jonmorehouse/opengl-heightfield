@@ -28,10 +28,10 @@ namespace application {
 		glPushMatrix();
 
 			// clear teh screen
-			glLoadIdentity();
+			// glLoadIdentity();
 			
 			// reset the rotation of all axes to 0,0,0
-			glTranslatef(translation[0], translation[1], translation[2]);
+			// glTranslatef(translation[0], translation[1], translation[2]);
 
 			// set up the proper rotations
 			glRotatef(rotation[0], 1.0, 0.0,0.0);
@@ -39,7 +39,7 @@ namespace application {
 			glRotatef(rotation[2], 0.0, 0.0,1.0);
 
 			// set up the proper scale each time!
-			glScalef(scale[0], scale[1], scale[2]);
+			// glScalef(scale[0], scale[1], scale[2]);
 
 			// draw out each of the polygons needed for this object
 			// drawPolygons();//loops through and draws out each polygons		
@@ -86,17 +86,5 @@ namespace application {
 		glEnd();
 	}
 
-	// initialize the view perspective
-	void viewPerspective() {
-
-		float ymax, xmax;
-		float temp, temp2, temp3, temp4;
-		ymax = znear * tanf(15.0 * 3.14 / 360.0);
-		//ymin = -ymax;
-		//xmin = -ymax * aspectRatio;
-		xmax = ymax * aspectRatio;
-		glhFrustumf2(matrix, -xmax, xmax, -ymax, ymax, znear, zfar);
-
-	}
 
 }

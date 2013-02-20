@@ -6,7 +6,7 @@
 
 // frame variables
 float rotation[3] = {0.0, 0.0, 0.0}, 
-  translation[3] = {0.0, 0.0, 0.0},
+  translation[3] = {-5.0, 0.0, 29.0},
   scale[3] = {10, 10, 10};
 
 // window variables etc
@@ -100,6 +100,9 @@ int main (int argc, char ** argv) {
 
   // enable 3d buffering / z-buffer
   glEnable(GL_DEPTH_TEST);
+
+  // going to assume that we are using the default reshape function
+  // just need our viewport set to 0,0,w,h
   // now enter the main glut loop 
   glutMainLoop();
      
