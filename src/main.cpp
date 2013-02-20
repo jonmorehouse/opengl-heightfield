@@ -5,13 +5,25 @@
 #include <pic.h>
 
 // frame variables
-float rotation[3] = {0.0, 0.0, 0.0}, 
-  translation[3] = {-5.0, 0.0, 29.0},
-  scale[3] = {10, 10, 10};
+float rotation[3] = {5.0, 0.0, 0.0}, 
+  translation[3] = {0.0, 0.0, -100.0},
+  scale[3] = {0.1, 0.1, 1};
 
 // window variables etc
 int windowHeight = 600, 
   windowWidth = 600;
+
+// declare a global type to help us discern what type of display the user currently desires
+typedef enum {
+
+  WIREFRAME,
+  GRAYSCALE,
+  POINTS
+
+} DisplayType;
+
+// display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
+DisplayType displayType;
 
 // include application code base / namespaces
 #include "modules/interaction.hpp"
