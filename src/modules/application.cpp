@@ -17,7 +17,6 @@ namespace application {
 	// display is for drawing out the elements using our scaled frame etc
 	void display() {
 
-
 		// rotate, scaling and translation should take place before this code in the future
 		// draw a quick cube around the origin of the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
@@ -25,6 +24,7 @@ namespace application {
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 
 		// reset the matrix to a default state before rotating scaling etc
+		glMatrixMode(GL_PROJECTION);	
 		glPushMatrix();
 
 			// clear teh screen
@@ -68,60 +68,34 @@ namespace application {
 		GLfloat color[3] = {1.0,1.0, 1.0};
 		// need to add in the individual vertices for this object
 			
-		//Multi-colored side - FRONT
-		  glBegin(GL_POLYGON);
-		 
-		  glColor3f( 1.0, 0.0, 0.0 );     glVertex3f(  0.5, -0.5, -0.5 );      // P1 is red
-		  glColor3f( 0.0, 1.0, 0.0 );     glVertex3f(  0.5,  0.5, -0.5 );      // P2 is green
-		  glColor3f( 0.0, 0.0, 1.0 );     glVertex3f( -0.5,  0.5, -0.5 );      // P3 is blue
-		  glColor3f( 1.0, 0.0, 1.0 );     glVertex3f( -0.5, -0.5, -0.5 );      // P4 is purple
-		 
-		  glEnd();
-		 
-		  // White side - BACK
-		  glBegin(GL_POLYGON);
-		  glColor3f(   1.0,  1.0, 1.0 );
-		  glVertex3f(  0.5, -0.5, 0.5 );
-		  glVertex3f(  0.5,  0.5, 0.5 );
-		  glVertex3f( -0.5,  0.5, 0.5 );
-		  glVertex3f( -0.5, -0.5, 0.5 );
-		  glEnd();
-		 
-		  // Purple side - RIGHT
-		  glBegin(GL_POLYGON);
-		  glColor3f(  1.0,  0.0,  1.0 );
-		  glVertex3f( 0.5, -0.5, -0.5 );
-		  glVertex3f( 0.5,  0.5, -0.5 );
-		  glVertex3f( 0.5,  0.5,  0.5 );
-		  glVertex3f( 0.5, -0.5,  0.5 );
-		  glEnd();
-		 
-		  // Green side - LEFT
-		  glBegin(GL_POLYGON);
-		  glColor3f(   0.0,  1.0,  0.0 );
-		  glVertex3f( -0.5, -0.5,  0.5 );
-		  glVertex3f( -0.5,  0.5,  0.5 );
-		  glVertex3f( -0.5,  0.5, -0.5 );
-		  glVertex3f( -0.5, -0.5, -0.5 );
-		  glEnd();
-		 
-		  // Blue side - TOP
-		  glBegin(GL_POLYGON);
-		  glColor3f(   0.0,  0.0,  1.0 );
-		  glVertex3f(  0.5,  0.5,  0.5 );
-		  glVertex3f(  0.5,  0.5, -0.5 );
-		  glVertex3f( -0.5,  0.5, -0.5 );
-		  glVertex3f( -0.5,  0.5,  0.5 );
-		  glEnd();
-		 
-		  // Red side - BOTTOM
-		  glBegin(GL_POLYGON);
-		  glColor3f(   1.0,  0.0,  0.0 );
-		  glVertex3f(  0.5, -0.5, -0.5 );
-		  glVertex3f(  0.5, -0.5,  0.5 );
-		  glVertex3f( -0.5, -0.5,  0.5 );
-		  glVertex3f( -0.5, -0.5, -0.5 );
-		  glEnd();
+		// draw 1->2 vertex / plane
+		glBegin(GL_POLYGON);
+
+			// glScalef(scale[0], scale[1], scale[2]);
+	
+			glColor3f(0.5, 0.5, 0.5);
+			// glVertex3f(x, y-1, heightField->getPoint(x, y-1));
+			// glVertex3f(x, y, heightField->getPoint(x, y));
+			// glVertex3f(x-1, y, heightField->getPoint(x-1, y));
+
+			glVertex3f(0,0,0);
+			glVertex3f(0,4.0/100,0);
+			glVertex3f(4.0/100,4.0/100,0);
+			glVertex3f(4.0/100,0,0);
+
+		glEnd();
+	}
+
+	// initialize the view perspective
+	void viewPerspective() {
+
+		float ymax, xmax;
+		float temp, temp2, temp3, temp4;
+		ymax = znear * tanf(15.0 * 3.14 / 360.0);
+		//ymin = -ymax;
+		//xmin = -ymax * aspectRatio;
+		xmax = ymax * aspectRatio;
+		glhFrustumf2(matrix, -xmax, xmax, -ymax, ymax, znear, zfar);
 
 	}
 

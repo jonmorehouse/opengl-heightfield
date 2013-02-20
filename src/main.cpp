@@ -5,9 +5,9 @@
 #include <pic.h>
 
 // frame variables
-float rotation[3] = {1.0, 0.0, 0.0}, 
+float rotation[3] = {0.0, 0.0, 0.0}, 
   translation[3] = {0.0, 0.0, 0.0},
-  scale[3] = {0.9, 0.9, 0.9};
+  scale[3] = {10, 10, 10};
 
 // window variables etc
 int windowHeight = 600, 
@@ -73,10 +73,6 @@ int main (int argc, char ** argv) {
 
   heightFieldInit(argv[1]);//initialize the image etc
 
-  // lets initialize the heightfield object to help with our data
-
-
-
   // set up the initializer function for glut
   glutInit(&argc, argv);
 
@@ -106,7 +102,6 @@ int main (int argc, char ** argv) {
   glEnable(GL_DEPTH_TEST);
   // now enter the main glut loop 
   glutMainLoop();
-
      
   // image::saveScreenshot("./test.jpf");
 

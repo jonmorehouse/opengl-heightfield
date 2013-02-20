@@ -28,6 +28,9 @@ namespace application {
 
 	// draw an individual polygon -- will be a plainly formatted drawPolygon
 	void drawPolygon(unsigned int x, unsigned int y);
+
+	// responsible for drawing a single plane given a particular element
+	void drawPlane(unsigned int x, unsigned int y);
 }
 
 #endif 	
