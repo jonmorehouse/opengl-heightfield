@@ -13,11 +13,12 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
+#include "classes/height_field.hpp"
 
-extern Pic * currentImage;
-extern float g_vLandRotate[3];
-extern float g_vLandTranslate[3];
-extern float g_vLandScale[3];
+extern HeightField * heightField;//set up and initialized in our main init function
+extern float g_vLandRotate[3];// set up and initialized in main file
+extern float g_vLandTranslate[3];// set up and initialized in main file
+extern float g_vLandScale[3];// set up and initialized in main file
 
 namespace interaction {
 

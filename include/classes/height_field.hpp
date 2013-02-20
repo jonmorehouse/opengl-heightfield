@@ -10,6 +10,12 @@
 #ifndef HEIGHT_FIELD_HPP
 #define HEIGHT_FIELD_HPP
 
+#include <stdlib.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GLUT/glut.h>
+#include <pic.h>
+
 typedef enum {
 
 	GRAYSCALE
@@ -23,8 +29,8 @@ class HeightField {
 		~HeightField();		
 
 	public: //access functions
-		inline void addPoint(unsigned int x, unsigned int y, unsigned int z);
-		inline unsigned int getPoint(unsigned int x, unsigned int y, unsigned int z);
+		void addPoint(unsigned int x, unsigned int y, unsigned int z);
+		unsigned int getPoint(unsigned int x, unsigned int y, unsigned int z);
 
 	private://variables
 

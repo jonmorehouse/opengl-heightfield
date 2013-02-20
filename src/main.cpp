@@ -4,9 +4,6 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
-// declare some global variables 
-Pic * currentImage = NULL;//null until defined later in our function
-
 // frame variables
 float g_vLandRotate[3] = {1.0, 0.0, 0.0}, 
   g_vLandTranslate[3] = {0.0, 0.0, 0.0},
@@ -25,6 +22,45 @@ int windowHeight = 600,
 // height field holder for this application
 HeightField * heightField = NULL;
 
+// grab the jpeg data from a file and then initialize a height field object
+// this can be optimized later to help with other file types
+void heightFieldInit(char * filename) {
+
+  // initialize images etc
+  Pic * image = jpeg_read(filename, NULL);
+
+  // ensure that the file could be read etc
+  if (!image) {
+
+    printf("Error reading %s.\n", filename);
+    exit(1);
+
+  }
+
+  // initialize all of our points etc
+  unsigned int height = image->nx,
+    width = image->ny,
+    intensity;//current pixel intensity from 0 to 256
+
+  // set up the height field object for global use
+  heightField = new HeightField(height, width, GRAYSCALE);
+
+  // need to add all of the proper points from this point forward 
+  for (unsigned int y = 0; y < height; y++) {
+
+    for (unsigned int x = 0; x < width; x++) {
+
+      // grab the pixel intensity for each piece of the image 
+      intensity = image->pix[y * width * 1 + x];
+
+      // add the proper point into the height field object
+      heightField->addPoint(x, y, intensity);
+    }
+  }
+
+  delete image;
+}
+
 int main (int argc, char ** argv) {
 
   if (argc < 2) {
@@ -35,15 +71,11 @@ int main (int argc, char ** argv) {
 
   }
 
-  // create a new *pic with allocated elements
-  currentImage = jpeg_read(argv[1], NULL);
-  
-  // check the validity of the image
-  if (!currentImage) {
+  heightFieldInit(argv[1]);//initialize the image etc
 
-    printf("Error reading %s.\n", argv[1]);
-    exit(1);
-  }
+  // lets initialize the heightfield object to help with our data
+
+
 
   // set up the initializer function for glut
   glutInit(&argc, argv);

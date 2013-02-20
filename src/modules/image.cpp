@@ -40,13 +40,4 @@ namespace image {
 
   }
 
-  void draw() {
-
-    // will be responsible for applying texture maps etc in the future
-    // will want to center the image when we do this from our other application because this may be scaled else where right?
-    glDrawPixels(currentImage->nx, currentImage->ny, GL_RGBA, GL_UNSIGNED_BYTE, currentImage->pix); 
-
-
-  }
-
 }

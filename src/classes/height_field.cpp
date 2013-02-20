@@ -1,11 +1,10 @@
 #include "classes/height_field.hpp"
 
-HeightField::HeightField(unsigned int height, unsigned int width, FieldType type) {// : height(height), width(width), type(type) {
+HeightField::HeightField(unsigned int height, unsigned int width, FieldType type) : height(height), width(width), type(type) {
 
 	// size of the array
 	this->size = height * width;// in the future, when we want to work with things other than grayscale images, we can assume that 
 	this->data = new unsigned int[size];//this is the data to store the correct points
-
 }
 
 HeightField::~HeightField() {
@@ -24,10 +23,11 @@ unsigned int HeightField::getPoint(unsigned int x, unsigned int y, unsigned int 
 
 }
 
-unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {
+inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {
 
-	return (y - 1) * this->width + y;
+	unsigned int index = (y * this->width) + x;
 	
+	return index;
 }
 
 
