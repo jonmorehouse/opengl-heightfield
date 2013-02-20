@@ -16,11 +16,14 @@ float g_vLandRotate[3] = {1.0, 0.0, 0.0},
 int windowHeight = 600, 
   windowWidth = 600;
 
-
 // include application code base / namespaces
 #include "modules/interaction.hpp"
 #include "modules/image.hpp"
 #include "modules/application.hpp"
+#include "classes/height_field.hpp"
+
+// height field holder for this application
+HeightField * heightField = NULL;
 
 int main (int argc, char ** argv) {
 

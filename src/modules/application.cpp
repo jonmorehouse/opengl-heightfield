@@ -33,7 +33,7 @@ namespace application {
 		// reset the matrix to a default state before rotating scaling etc
 		glPushMatrix();
 		glLoadIdentity();
-
+		
 		// reset the rotation of all axes to 0,0,0
 		glTranslatef(0.0,0.0,0.0);
 		glRotatef(20.0, 1.0, 0.0, 0.0);
@@ -44,7 +44,7 @@ namespace application {
 
 		// now lets draw our image
 		glRasterPos2i(0,0);
-		image::draw();//will be responsible for drawing our image -- texture mapping and other changes will come to this later on when we apply that functionality
+		
 
 		glPopMatrix();
 		// swap the buffers and bring the second one out from hiding

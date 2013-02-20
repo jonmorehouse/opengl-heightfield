@@ -23,14 +23,13 @@ PROGRAM = current
 # compile the modules into our main function
 all: src/main.cpp 
 
-	$(COMPILER) $(COMPILERFLAGS) -o $(PROGRAM) src/main.cpp src/modules/*.cpp $(LIBRARIES)
+	$(COMPILER) $(COMPILERFLAGS) -o $(PROGRAM) src/main.cpp src/modules/*.cpp src/classes/*.cpp $(LIBRARIES)
 
 # currently not being used -- deciding to use a different programatic structure for now
 # compile our modules object
 modules.o: src/modules/*.cpp include/modules/*.hpp 
 
 	$(COMPILER) $(COMPILERFLAGS) -c -o src/modules.o src/modules.cpp $(LIBRARIES)
-
 
 debug: src/main.cpp 
 
