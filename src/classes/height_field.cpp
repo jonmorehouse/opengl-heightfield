@@ -33,11 +33,16 @@ void HeightField::addPoint(unsigned int x, unsigned int y, unsigned int z) {
 
 }
 
-// GLfloat[3] HeightField::getVertex(unsigned int x, unsigned int y) {
+// grab a vertex array from a certain position
+GLfloat * HeightField::getVertex(unsigned int x, unsigned int y) {
 
+	// grab the actual index using our algorithm
+	unsigned int index = this->getIndex(x,y);
 
+	// now return the actual vertex
+	return this->vertices[index];
 
-// }
+}
 
 unsigned int HeightField::getPoint(unsigned int x, unsigned int y) {
 
@@ -65,5 +70,6 @@ inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {
 	
 	return index;
 }
+
 
 

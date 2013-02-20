@@ -33,7 +33,7 @@ class HeightField {
 		unsigned int getPoint(unsigned int x, unsigned int y);//return a single point's z value
 		unsigned int getHeight();//returns the height of the image
 		unsigned int getWidth();//returns the width
-		// GLfloat[3] * getVertex(unsigned int x, unsigned int y);//grab a particular element
+		GLfloat * getVertex(unsigned int x, unsigned int y);//grab a particular element
 
 	private://variables
 
