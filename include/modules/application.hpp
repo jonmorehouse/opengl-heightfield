@@ -1,11 +1,15 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
+// initialize our other namespace functions for heightfield data and the display methods that will actually display our imagery
+#include "classes/height_field.hpp"
+#include "modules/display.hpp"
+
+// initialize standard libraries needed if they were not already included
 #include <stdlib.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
-#include "classes/height_field.hpp"
 
 // height field object is the data that drives the program
 extern HeightField * heightField;//set up and initialized in our main init function
@@ -19,6 +23,11 @@ extern float rotation[3];// set up and initialized in main file
 extern float translation[3];// set up and initialized in main file
 extern float scale[3];// set up and initialized in main file
 
+// access our current application display type from main.cpp function
+// this will also be edited in the interaction namespace by responses from our glut loop
+extern display::DisplayType displayType;
+
+
 // 
 namespace application {
 
@@ -29,14 +38,9 @@ namespace application {
 	// display is what is shown each time
 	void display();
 
-	// draw out all the polygons -- responsible for drawing out with the proper elements etc
-	void drawPolygons();//draws out the individual polygons
+	// display controller is responsible for abstracting away the calls to our display elements
+	void displayController();
 
-	// draw an individual polygon -- will be a plainly formatted drawPolygon
-	void drawPolygon(unsigned int x, unsigned int y);
-
-	// responsible for drawing a single plane given a particular element
-	void drawPlane(unsigned int x, unsigned int y);
 }
 
 #endif 	

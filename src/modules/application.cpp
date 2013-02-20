@@ -3,13 +3,15 @@
 namespace application {
 
 	void init() {
-		// glutSwapBuffers();
-		// idle();		
+
+		//glut initialization data goes here
+		// anything that needs to be initialized in the main loop can be inserted here to help offset application load
 	}
 
 	// implement idle function -- responsible for working with the image on a consistent basis to continually ensure its integrity
 	void idle() {
 
+		// initialize other idle functionality here -- this could be a casual rotation or some sort of randomization of the translations etc
 		glutPostRedisplay();//run the display segment again to update any changes that we may have
 	}	
 
@@ -59,61 +61,38 @@ namespace application {
 			glScalef(scale[0], scale[1], scale[2]);
 
 			// draw out each of the polygons needed for this object
-			// drawPolygons();//loops through and draws out each polygons		
-			drawPolygon(2,2);
+			// now need to call the proper draw elements
+			displayController();//this is responsible for initializing the correct display methods
 
 		glPopMatrix();
 		// swap the buffers and bring the second one out from hiding
 		glutSwapBuffers();
 	}
 
-	// responsible for calling the correct function given input based upon the current displayType;
-	// responsible for drawing the polygons for each individual piece of our application
-	void drawPolygons() {
+	// display controller is where special cases in the future can go
+	void displayController() {
 
-		for (int x = 1, xMax = heightField->getWidth() -1; x < xMax; x++) {
+		// push a matrix to rotate our element so that z will actually be drawn as y so we don't have to worry about this!
+		glPushMatrix();
 
-			for (int y = 1, yMax = heightField->getHeight() -1; y < yMax; y++)	 {
+		// by rotating around the x axis by 90.0
+		// when we draw a z value, it will look like a y value and we don't need to worry about that particular case
+		// multiply the current matrix by 90, but only around the x axis
+		glRotatef(90.0, 1.0,0.0, 0.0);
 
-				// draw out the proper polygon for this particular point
-				drawPolygon(x, y);
-			}
-		}
+		// checkout our current display type and then call the correct display from the display namespace
+		if (displayType == display::GRAYSCALE)
+			display::drawGrayscale();
+
+		else if (displayType == display::WIREFRAME)
+			display::drawWireframe();
+
+		else if (displayType == display::POINT)
+			display::drawPoints();
+
+		// initialize any other elements etc	
+		glPopMatrix();//stop the z/y reversing here
+
 	}
-
-	// draw polygon assumes that there is a left point, and a right point!
-	void drawPolygon(unsigned int x, unsigned int y) {
-
-		GLfloat color[3] = {1.0,1.0, 1.0};
-		// need to add in the individual vertices for this object
-			
-		// draw 1->2 vertex / plane
-		glBegin(GL_POLYGON);
-
-			glColor3f(0.5, 0.5, 0.5);
-			// glVertex3f(x, y-1, heightField->getPoint(x, y-1));
-			// glVertex3f(x, y, heightField->getPoint(x, y));
-			// glVertex3f(x-1, y, heightField->getPoint(x-1, y));
-
-			glVertex3f(-10,-10,0);
-			glVertex3f(-10, 10, 0);
-			glVertex3f(10, 10, 0);
-			glVertex3f(10, -10, 0);
-
-		glEnd();
-
-		glBegin(GL_POLYGON);
-
-			glColor3f(5, 5, 5);
-
-
-
-			glVertex3f(-10, -10, 0);
-			glVertex3f(-5, -5, 10);
-			glVertex3f(10,10,0);
-
-		glEnd();
-	}
-
 
 }

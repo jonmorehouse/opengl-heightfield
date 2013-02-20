@@ -10,8 +10,12 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 
+// require our global persistent heightfield object
+extern HeightField * heightField;	
+
 namespace display {
 
+	// declare a type that is useful for the toggling of what type of display we want
 	typedef enum {
 
 		GRAYSCALE,
@@ -27,7 +31,7 @@ namespace display {
 	void drawGrayscale();
 
 	// void draw wireframe of the mesh etc
-	void drawWireFrame();
+	void drawWireframe();
 
 }
 
