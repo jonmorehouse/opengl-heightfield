@@ -5,14 +5,12 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
-#include <pic.h>
-#include "modules/image.hpp"
 #include "classes/height_field.hpp"
 
 // height field object is the data that drives the program
 extern HeightField * heightField;//set up and initialized in our main init function
 // grab the current type of display for rendering
-extern DisplayType displayType;
+// extern DisplayType displayType;
 // grab the current window dimensions
 extern int windowHeight;
 extern int windowWidth;

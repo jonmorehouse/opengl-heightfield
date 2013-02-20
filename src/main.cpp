@@ -1,9 +1,17 @@
+#include "classes/height_field.hpp" //responsible for handling all data that needs to persist throughout the application
+#include "modules/image.hpp"//useful for user interaction etc
+#include "modules/interaction.hpp"//responsible for handling user interaction
+#include "modules/application.hpp" // responsible for controlling the drawing of elements 
+#include "modules/display.hpp" //responsible for drawing out the actual map elements
+
+// include application code base / namespaces
 #include <stdlib.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
 
+// global variables
 // frame variables
 float rotation[3] = {5.0, 0.0, 0.0}, 
   translation[3] = {0.0, 0.0, -100.0},
@@ -13,23 +21,8 @@ float rotation[3] = {5.0, 0.0, 0.0},
 int windowHeight = 600, 
   windowWidth = 600;
 
-// declare a global type to help us discern what type of display the user currently desires
-typedef enum {
-
-  WIREFRAME,
-  GRAYSCALE,
-  POINTS
-
-} DisplayType;
-
 // display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
-DisplayType displayType;
-
-// include application code base / namespaces
-#include "modules/interaction.hpp"
-#include "modules/image.hpp"
-#include "modules/application.hpp"
-#include "classes/height_field.hpp"
+display::DisplayType displayType = display::GRAYSCALE;//initialize the type of application we are going to draw out
 
 // height field holder for this application
 HeightField * heightField = NULL;

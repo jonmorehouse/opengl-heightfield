@@ -47,7 +47,7 @@ class HeightField {
 	private://unsigned ints
 
 		// allow for quick index finding. This will make it easier to map our data structures to future elements
-		inline unsigned int getIndex(unsigned int x, unsigned int y);//get the proper index for this data structure
+		unsigned int getIndex(unsigned int x, unsigned int y);//get the proper index for this data structure
 
 
 };

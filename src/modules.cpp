@@ -3,3 +3,4 @@
 #include "modules/image.cpp"
 #include "modules/application.cpp"
 #include "modules/interaction.cpp"
+#include "modules/display.cpp"
