@@ -73,7 +73,7 @@ namespace application {
 	void displayController() {
 
 		// push a matrix to rotate our element so that z will actually be drawn as y so we don't have to worry about this!
-		glPushMatrix();
+		// glPushMatrix();
 
 		// by rotating around the x axis by 90.0
 		// when we draw a z value, it will look like a y value and we don't need to worry about that particular case
@@ -90,8 +90,11 @@ namespace application {
 		else if (displayType == display::POINT)
 			display::drawPoints();
 
+		else if (displayType == display::COLOR)
+			display::drawColor();
+
 		// initialize any other elements etc	
-		glPopMatrix();//stop the z/y reversing here
+		// glPopMatrix();//stop the z/y reversing here
 
 	}
 

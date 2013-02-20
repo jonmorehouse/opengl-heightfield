@@ -18,9 +18,10 @@ namespace display {
 	// declare a type that is useful for the toggling of what type of display we want
 	typedef enum {
 
-		GRAYSCALE,
-		WIREFRAME,
-		POINT,
+		GRAYSCALE,//draw out a grayscale image
+		WIREFRAME,//draw out a wireframe -- currently not working
+		POINT,//draw out only points
+		COLOR,//color used for tests right now
 		
 	} DisplayType;
 
@@ -33,6 +34,8 @@ namespace display {
 	// void draw wireframe of the mesh etc
 	void drawWireframe();
 
+	//use the color element as a temporary drawing element
+	void drawColor();
 }
 
 #endif

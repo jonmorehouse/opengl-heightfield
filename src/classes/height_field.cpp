@@ -53,15 +53,12 @@ unsigned int HeightField::getPoint(unsigned int x, unsigned int y) {
 unsigned int HeightField::getHeight() {
 
 	return this->height;
-
-
 }
 
 
 unsigned int HeightField::getWidth() {
 
 	return this->width;
-
 }
 
 inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {

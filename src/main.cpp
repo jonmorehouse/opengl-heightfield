@@ -22,7 +22,7 @@ int windowHeight = 600,
   windowWidth = 600;
 
 // display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
-display::DisplayType displayType = display::POINT;//initialize the type of application we are going to draw out
+display::DisplayType displayType = display::COLOR;//initialize the type of application we are going to draw out
 
 // height field holder for this application
 HeightField * heightField = NULL;
