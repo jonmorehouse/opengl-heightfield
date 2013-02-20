@@ -5,10 +5,10 @@
 #include <pic.h>
 
 // declare some global variables 
-Pic * currentImage;
+Pic * currentImage = NULL;//null until defined later in our function
 
 // frame variables
-float g_vLandRotate[3] = {0.0, 0.0, 0.0}, 
+float g_vLandRotate[3] = {1.0, 0.0, 0.0}, 
   g_vLandTranslate[3] = {0.0, 0.0, 0.0},
   g_vLandScale[3] = {0.0, 0.0, 0.0};
 
@@ -54,22 +54,22 @@ int main (int argc, char ** argv) {
   // set the window position
   glutInitWindowPosition(100, 100);
   // name the window etc ... 
-  glutCreateWindow("Tutorial 1");
+  glutCreateWindow("Assignment 1: Height Field");
 
   // set up the main display function
   glutDisplayFunc(application::display);
 
   // set the various callbacks for the interaction with opengl
-  glutIdleFunc(application::display);
-  glutMotionFunc(interaction::mousedrag);
-  glutPassiveMotionFunc(interaction::mouseidle);
-  glutMouseFunc(interaction::mousebutton);
+  glutIdleFunc(application::idle);
+  // glutMotionFunc(interaction::mousedrag);
+  // glutPassiveMotionFunc(interaction::mouseidle);
+  // glutMouseFunc(interaction::mousebutton);
 
-  // allow the user to quit using the right mouse button menu
-  interaction::init();//initialize the interaction
-  application::init();//this is responsible for initializing the 
-
+  glEnable(GL_DEPTH_TEST);
   // now enter the main glut loop 
   glutMainLoop();
+
+  // 
+  // image::saveScreenshot("./test.jpf");
 
 }

@@ -16,11 +16,15 @@ extern float g_vLandRotate[3];
 extern float g_vLandTranslate[3];
 extern float g_vLandScale[3];
 
+// initialized in the main.cpp when we load in the correct image and load it with pic library
+extern Pic * currentImage;
+
 namespace image {
 
+	void draw();//responsible for drawing the image out with the current matrix changes already applied
 	void saveScreenshot (char * filename);
 
-	
+		
 	
 
 }

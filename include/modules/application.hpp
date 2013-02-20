@@ -6,6 +6,7 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
+#include "modules/image.hpp"
 
 extern Pic * currentImage;
 extern float g_vLandRotate[3];
