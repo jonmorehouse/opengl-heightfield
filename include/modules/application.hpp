@@ -22,6 +22,9 @@ namespace application {
 	void idle();
 	// display is what is shown each time
 	void display();
+
+	// draw an individual polygon
+	void drawPolygons();//draws out the individual polygons
 }
 
 #endif 	

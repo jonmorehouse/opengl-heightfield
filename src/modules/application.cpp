@@ -2,6 +2,17 @@
 
 namespace application {
 
+	void drawPolygons() {
+
+		// for (int x = 0, xMax = fieldHeight->) 
+		for (int x = 0, xMax = heightField->getWidth(); x < xMax; x++) {
+
+			for (int y = 0, yMax = heightField->getHeight(); y < yMax; y++)	 {
+
+				printf("%u\n", heightField->getPoint(x, y));
+			}
+		}
+	}
 
 	void init() {
 		// glutSwapBuffers();
@@ -29,6 +40,12 @@ namespace application {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 		// clear the colors and make the background black
 		glClearColor(0.0, 0.0, 0.0, 1.0);
+
+
+		// draw out each of the polygons needed for this object
+		// drawPolygons();//loops through and draws out each polygons		
+
+
 
 		// reset the matrix to a default state before rotating scaling etc
 		glPushMatrix();

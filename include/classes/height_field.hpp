@@ -29,8 +29,10 @@ class HeightField {
 		~HeightField();		
 
 	public: //access functions
-		void addPoint(unsigned int x, unsigned int y, unsigned int z);
-		unsigned int getPoint(unsigned int x, unsigned int y, unsigned int z);
+		void addPoint(unsigned int x, unsigned int y, unsigned int z);//add a point to this height map
+		unsigned int getPoint(unsigned int x, unsigned int y);//return a single point's z value
+		unsigned int getHeight();//returns the height of the image
+		unsigned int getWidth();//returns the width
 
 	private://variables
 

@@ -17,9 +17,23 @@ void HeightField::addPoint(unsigned int x, unsigned int y, unsigned int z) {
 	this->data[this->getIndex(x,y)] = z;//
 }
 
-unsigned int HeightField::getPoint(unsigned int x, unsigned int y, unsigned int z) {
+unsigned int HeightField::getPoint(unsigned int x, unsigned int y) {
 
 	return this->data[this->getIndex(x,y)];
+
+}
+
+unsigned int HeightField::getHeight() {
+
+	return this->height;
+
+
+}
+
+
+unsigned int HeightField::getWidth() {
+
+	return this->width;
 
 }
 
