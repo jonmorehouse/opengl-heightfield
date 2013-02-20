@@ -33,6 +33,7 @@ class HeightField {
 		unsigned int getPoint(unsigned int x, unsigned int y);//return a single point's z value
 		unsigned int getHeight();//returns the height of the image
 		unsigned int getWidth();//returns the width
+		// GLfloat[3] * getVertex(unsigned int x, unsigned int y);//grab a particular element
 
 	private://variables
 
@@ -41,8 +42,9 @@ class HeightField {
 		unsigned int height;//height of the map
 		unsigned int size;//this is the size of the array that we are working with		
 		unsigned int * data;//this is the data that we are storing for this particular image
+		GLfloat (*vertices)[3];//this is an array of all the vertices we need for now
 
-	private://pounsigned ints
+	private://unsigned ints
 
 		// allow for quick index finding. This will make it easier to map our data structures to future elements
 		inline unsigned int getIndex(unsigned int x, unsigned int y);//get the proper index for this data structure

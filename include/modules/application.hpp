@@ -23,8 +23,11 @@ namespace application {
 	// display is what is shown each time
 	void display();
 
-	// draw an individual polygon
+	// draw out all the polygons -- responsible for drawing out with the proper elements etc
 	void drawPolygons();//draws out the individual polygons
+
+	// draw an individual polygon -- will be a plainly formatted drawPolygon
+	void drawPolygon(unsigned int x, unsigned int y);
 }
 
 #endif 	
