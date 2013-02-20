@@ -34,8 +34,23 @@ namespace display {
 
 	void drawWireframe() {
 
+		// want to display by strip here to allow for quick processing of each of the polygons that we need
+		// allow a quick strip of polygons to be drawn
+		glBegin(GL_TRIANGLE_STRIP);	
+
+		// set the triangle strip up for front-facing drawing to allow for clockwise
+		glFrontFace(GL_CW);
+		// want to loop through each row, stopping one from the bottom
+		for (int y = int(heightField->getHeight()) -1; y >= 1; y--) {
+
+			// we want to circle for each element in the next for loop and counter-clockwise add our vertices to the point
 
 
+		}
+
+
+
+		glEnd();
 
 	}
 
