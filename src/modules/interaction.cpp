@@ -117,17 +117,19 @@ namespace interaction {
 
 	void keyPress(int key, int x, int y) {
 
+		float delta = 10.0;
+
 		if (key == GLUT_KEY_LEFT)
-			rotation[0] -= 2.0;
+			rotation[1] -= delta;
 
 		if (key == GLUT_KEY_RIGHT)
-			rotation[0] += 2.0;
+			rotation[1] += delta;
 
 		if (key == GLUT_KEY_UP) 
-			rotation[1] += 2.0;
+			rotation[0] += delta;
 
 		if (key == GLUT_KEY_DOWN)
-			rotation[1] -= 2.0;
+			rotation[0] -= delta;
 
 		glutPostRedisplay();
 		

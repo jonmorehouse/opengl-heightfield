@@ -22,10 +22,7 @@ namespace application {
 		// draw a quick cube around the origin of the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 		// clear the colors and make the background black
-		glClearColor(0.0,0.0,0.0, 1.0);
-
-
-
+		glClearColor(0.0, 0.0, 0.0, 1.0);
 
 		// reset the matrix to a default state before rotating scaling etc
 		glPushMatrix();

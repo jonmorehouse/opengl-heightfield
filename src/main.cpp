@@ -7,7 +7,7 @@
 // frame variables
 float rotation[3] = {1.0, 0.0, 0.0}, 
   translation[3] = {0.0, 0.0, 0.0},
-  scale[3] = {1.0, 1.0, 1.0};
+  scale[3] = {0.9, 0.9, 0.9};
 
 // window variables etc
 int windowHeight = 600, 
