@@ -22,7 +22,7 @@ int windowHeight = 600,
   windowWidth = 600;
 
 // display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
-display::DisplayType displayType = display::GRAYSCALE;//initialize the type of application we are going to draw out
+display::DisplayType displayType = display::POINT;//initialize the type of application we are going to draw out
 
 // height field holder for this application
 HeightField * heightField = NULL;
@@ -105,6 +105,8 @@ int main (int argc, char ** argv) {
 
   // enable 3d buffering / z-buffer
   glEnable(GL_DEPTH_TEST);
+  // enable point size for this particular program
+  // glEnable(GL_PROGRAM_POINT_SIZE);
 
   // going to assume that we are using the default reshape function
   // just need our viewport set to 0,0,w,h
