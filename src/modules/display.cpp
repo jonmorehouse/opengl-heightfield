@@ -106,5 +106,4 @@ namespace display {
 		glEnd();
 
 	}
-
 }
