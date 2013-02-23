@@ -13,8 +13,7 @@ namespace application {
 
 		// initialize other idle functionality here -- this could be a casual rotation or some sort of randomization of the translations etc
 		glutPostRedisplay();//run the display segment again to update any changes that we may have
-	}	
-
+	}
 
 	// display is for drawing out the elements using our scaled frame etc
 	void display() {
@@ -23,20 +22,12 @@ namespace application {
 		// draw a quick cube around the origin of the screen
 		glViewport(0,0, 600, 600);	
 
-		// initialize our matrix for the final viewing using projection
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-
-
-		// fov angle, aspect ratio = width / height, near z, far z
-		gluPerspective(15.0f, windowWidth / windowHeight, 0.01, 500.0);
-
 		// start editing the modelview -- not the scenary
 		glMatrixMode(GL_MODELVIEW);
 
 			glLoadIdentity();
 
-		// reset the matrix to a default state before rotating scaling etc
+			// reset the matrix to a default state before rotating scaling etc
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 			// clear the colors and make the background black
 			glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -61,8 +52,15 @@ namespace application {
 			// draw out each of the polygons needed for this object
 			// now need to call the proper draw elements
 			displayController();//this is responsible for initializing the correct display methods
-		
-		// glPopMatrix();
+
+		// initialize the gl_projection matrix -- this is useful for setting up perspective etc ...
+		// initialize our matrix for the final viewing using projection ... 
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+
+		// fov angle, aspect ratio = width / height, near z, far z
+		gluPerspective(15.0f, windowWidth / windowHeight, 0.01, 500.0);
+
 		// swap the buffers and bring the second one out from hiding
 		glutSwapBuffers();
 
@@ -77,13 +75,9 @@ namespace application {
 		// by rotating around the x axis by 90.0
 		// when we draw a z value, it will look like a y value and we don't need to worry about that particular case
 		// multiply the current matrix by 90, but only around the x axis
-		glRotatef(90.0, 1.0, 1.0, 1.0);
-
+		glRotatef(90.0, 1.0, 0.0, 0.0);
 		// scale our image for a second
-		// glScalef(0.5, 0.5, 0:.5);
 
-		display::drawCube();
-		/*
 		// checkout our current display type and then call the correct display from the display namespace
 		if (displayType == display::GRAYSCALE)
 			display::drawGrayscale();
@@ -96,7 +90,7 @@ namespace application {
 
 		else if (displayType == display::COLOR)
 			display::drawColor();
-		*/
+
 		// initialize any other elements etc	
 		glPopMatrix();//stop the z/y reversing here
 

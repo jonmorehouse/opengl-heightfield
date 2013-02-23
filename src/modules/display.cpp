@@ -28,41 +28,20 @@ namespace display {
 
 	void drawGrayscale() {
 
-		// want to loop through and draw each triangle with vertices
-		// we want to use the z-coordinate to get the proper color
-		glBegin(GL_TRIANGLE_STRIP);
+		/*
+			Declare a bottom color, declare a top color
+			We are simply connecting triangles between elements
+			Need to scale the z element between all three -- ie: multiply z by a range to find the element
+		*/	
+
+		// glBegin(GL_TRIANGLE);
+
+
 		
-		// cache the unsigned integers of the heightfield dimensions as unsigned integers because its not good practice to loop through and unsigned integer
-		int height = int(heightField->getHeight()),
-			width = int(heightField->getWidth());
-
-		// loop through starting at the top row
-		for (int y = height - 2; y >= 0; --y) {
-
-			// will go through and set the color of each vertex before drawing it out
-			// the color on the height field will be representative of its color intensity / z value
-			for (int x = 0; x < width - 2; ++x ) {
-
-				// set
-				glVertex3fv(heightField->getVertex(x, y+1));//add the left corner point -- point 1
-				glVertex3fv(heightField->getVertex(x, y));//add the current point -- point 2
-				glVertex3fv(heightField->getVertex(x+1, y+1));//add the next point -- point 3
-				glVertex3fv(heightField->getVertex(x+1, y));//add the 4th point -- point 4
-			}
-		}
-
-		glEnd();	
 
 	}
 
 	void drawWireframe() {
-
-		// use gl_line_strip here instead of this....
-		// want to display by strip here to allow for quick processing of each of the polygons that we need
-		// allow a quick strip of polygons to be drawn
-		glBegin(GL_TRIANGLE_STRIP);	
-		// set the triangle strip up for front-facing drawing to allow for clockwise
-		glPolygonMode( GL_FRONT, GL_LINE );
 
 		// cache height / width etc of this element
 		int height = int(heightField->getHeight()),
@@ -74,17 +53,32 @@ namespace display {
 			// we want to circle for each element in the next for loop and counter-clockwise add our vertices to the point
 			for (int x = 0; x < width - 2; ++x ) {
 
+				glColor3f(255,255,255);
+
 				// http://en.wikipedia.org/wiki/Triangle_strip -- for reference on the element
-				glVertex3fv(heightField->getVertex(x, y+1));//add the left corner point -- point 1
-				glVertex3fv(heightField->getVertex(x, y));//add the current point -- point 2
-				glVertex3fv(heightField->getVertex(x+1, y+1));//add the next point -- point 3
-				glVertex3fv(heightField->getVertex(x+1, y));//add the 4th point -- point 4
+				// 
+				glBegin(GL_LINES);
+					glVertex3fv(heightField->getVertex(x, y+1));//add the left corner point -- point 1
+					glVertex3fv(heightField->getVertex(x, y));//add the current point -- point 2
+				glEnd();
+				// 
+				glBegin(GL_LINES);	
+					glVertex3fv(heightField->getVertex(x+1, y+1));//add the next point -- point 3
+					glVertex3fv(heightField->getVertex(x+1, y));//add the 4th point -- point 4
+				glEnd();
+
+				// 
+				glBegin(GL_LINES);
+					glVertex3fv(heightField->getVertex(x, y+1));//add the left corner point -- point 1
+					glVertex3fv(heightField->getVertex(x+1, y+1));//add the next point -- point 3
+				glEnd();
+
+				glBegin(GL_LINES);
+					glVertex3fv(heightField->getVertex(x, y));//add the current point -- point 2
+					glVertex3fv(heightField->getVertex(x+1, y));//add the 4th point -- point 4
+				glEnd();					
 			}
 		}
-
-		// end the triangle strip	
-		glEnd();
-		glDisable(GL_POLYGON_OFFSET_LINE);
 	}
 
 	void drawColor() {
@@ -107,32 +101,4 @@ namespace display {
 
 	}
 
-	void drawCube() {
-
-		// this correctly draws the elements
-		// need to realize that 
-
-		glBegin(GL_POLYGON);
-
-		// start with black
-		glColor3f(75.0,0.0,0.0);
-		glVertex3i(0,0,0);
-		glVertex3i(10,0,0);
-		glColor3f(100.0,100.0,100.0);
-		glVertex3i(10,10,0);
-		glVertex3i(0, 10, 0);
-		// end of face 1
-		glEnd();
-		glBegin(GL_POLYGON);
-		glColor3f(00.0, 00.0, 00.0);
-		glVertex3i(0,0,0);
-		glVertex3i(0,10,0);
-		glColor3f(100.0,100.0,100.0);
-		glVertex3i(-5,10,20);
-		glVertex3i(-5,0,20);
-
-		glEnd();
-
-
-	}
 }
