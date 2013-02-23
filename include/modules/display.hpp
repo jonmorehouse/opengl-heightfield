@@ -36,6 +36,9 @@ namespace display {
 
 	//use the color element as a temporary drawing element
 	void drawColor();
+
+	//draw a simple test cube for now
+	void drawCube();
 }
 
 #endif

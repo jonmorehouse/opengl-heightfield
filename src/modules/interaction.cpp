@@ -117,19 +117,45 @@ namespace interaction {
 
 	void keyPress(int key, int x, int y) {
 
+		// change each time
 		float delta = 10.0;
 
+		// rotate counter clockwise / clockwise etc --- around the z axis
 		if (key == GLUT_KEY_LEFT)
 			rotation[1] -= delta;
 
 		if (key == GLUT_KEY_RIGHT)
 			rotation[1] += delta;
 
+		// rotate about the x axis this is into and out of the screen
 		if (key == GLUT_KEY_UP) 
 			rotation[0] += delta;
 
 		if (key == GLUT_KEY_DOWN)
 			rotation[0] -= delta;
+
+		// set up the rotation of the camera about the x axis -- this is the equivalent of swinging the camera around the on the horizontal axis	
+		if (key == 107) {//k key -- vim key mappings! -- rotate left
+
+			cameraRotation[1] += delta;
+
+			if (cameraRotation[1] > 360) //reset it!
+				cameraRotation[1] -= 360;//subtract the 360 from it	
+		} 
+		// now listen for the j key to move left
+		if (key == 106) {
+
+			// subtract so that the globe rotates forward, kind of out of the screen ... 
+			cameraRotation[0] -= delta;
+
+			// if the angle becomes less than 0, we need to reset the circle by adding 2pi
+			if (cameraRotation[0] < 0) // need to reset the element
+				cameraRotation[0] += 360;
+		}
+
+
+
+
 
 		glutPostRedisplay();
 		

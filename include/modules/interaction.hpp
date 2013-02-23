@@ -19,6 +19,8 @@ extern HeightField * heightField;//set up and initialized in our main init funct
 extern float rotation[3];// set up and initialized in main file
 extern float translation[3];// set up and initialized in main file
 extern float scale[3];// set up and initialized in main file
+extern float cameraRotation[2];//load the current camera rotation for the point of view
+
 
 namespace interaction {
 

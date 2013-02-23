@@ -7,6 +7,9 @@
 
 // initialize standard libraries needed if they were not already included
 #include <stdlib.h>
+#include <math.h>
+
+// gl libraries
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
@@ -22,6 +25,8 @@ extern int windowWidth;
 extern float rotation[3];// set up and initialized in main file
 extern float translation[3];// set up and initialized in main file
 extern float scale[3];// set up and initialized in main file
+extern float cameraRotation[2];//grab the camera rotation from the main function. This will rotate the point of view 
+extern float cameraDistance;//this is how far away the camera is -- ie the radius of the sphere of view
 
 // access our current application display type from main.cpp function
 // this will also be edited in the interaction namespace by responses from our glut loop
@@ -40,6 +45,7 @@ namespace application {
 
 	// display controller is responsible for abstracting away the calls to our display elements
 	void displayController();
+
 
 }
 

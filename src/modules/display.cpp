@@ -106,4 +106,33 @@ namespace display {
 		glEnd();
 
 	}
+
+	void drawCube() {
+
+		// this correctly draws the elements
+		// need to realize that 
+
+		glBegin(GL_POLYGON);
+
+		// start with black
+		glColor3f(75.0,0.0,0.0);
+		glVertex3i(0,0,0);
+		glVertex3i(10,0,0);
+		glColor3f(100.0,100.0,100.0);
+		glVertex3i(10,10,0);
+		glVertex3i(0, 10, 0);
+		// end of face 1
+		glEnd();
+		glBegin(GL_POLYGON);
+		glColor3f(00.0, 00.0, 00.0);
+		glVertex3i(0,0,0);
+		glVertex3i(0,10,0);
+		glColor3f(100.0,100.0,100.0);
+		glVertex3i(-5,10,20);
+		glVertex3i(-5,0,20);
+
+		glEnd();
+
+
+	}
 }

@@ -1,6 +1,6 @@
 #include "classes/height_field.hpp" //responsible for handling all data that needs to persist throughout the application
-#include "modules/image.hpp"//useful for user interaction etc
-#include "modules/interaction.hpp"//responsible for handling user interaction
+#include "modules/image.hpp" //useful for user interaction etc
+#include "modules/interaction.hpp" //responsible for handling user interaction
 #include "modules/application.hpp" // responsible for controlling the drawing of elements 
 #include "modules/display.hpp" //responsible for drawing out the actual map elements
 
@@ -11,11 +11,17 @@
 #include <GLUT/glut.h>
 #include <pic.h>
 
-// global variables
-// frame variables
-float rotation[3] = {5.0, 0.0, 0.0}, 
-  translation[3] = {0.0, 0.0, -100.0},
-  scale[3] = {0.1, 0.1, 1};
+// rotate the object rectangle -- this is done after the camera look up
+float rotation[3] = {0.0, 0.0, 0.0}, 
+  // current translation of the current object
+  translation[3] = {1.0, 1.0, -100.0},
+  // scale of the actual object
+  scale[3] = {0.1, 0.1, 1},
+  // this is the scalar that we will multiply by the rotation element
+  cameraDistance = 50.0,
+  // we want to be able to rotate the camera around the x axis to go above and beyond or around the y element
+  cameraRotation[2] = {0.0, 0.0};
+
 
 // window variables etc
 int windowHeight = 600, 
