@@ -46,7 +46,9 @@ namespace image {
 
   void screenshotController() {
 
-    // 
+    // only use this application if we explicitly state that we want screenshots
+    if (!screenShots) return;
+
     counter++;//iterate the counter
 
     // only take screenshots if we are on an interval of 30
