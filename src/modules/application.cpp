@@ -31,35 +31,25 @@ namespace application {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 			// clear the colors and make the background black
 			glClearColor(0.0, 0.0, 0.0, 1.0);
-			// glLoadIdentity();//reset the modelview matrix
-					
+
 			// reset the rotation of all axes to 0,0,0
 			glTranslatef(translation[0], translation[1], translation[2]);
-
-			// http://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml
-			// gluLookAt(0,0,0, 10*sin(10), 10*cos(cameraRotation[0]), 0, 0,1,0);
-
-			// gluLookAt(cameraDistance * cos(cameraRotation[1] / 6.28), cameraDistance, cameraDistance * sin(cameraRotation[1] / 6.28), 0, 0, 50, 0, 1, 0);
 
 			// set up the proper scale each time!
 			glScalef(scale[0], scale[1], scale[2]);
 
-			// set up the proper rotations
-			glRotatef(rotation[0], 1.0, 0.0,0.0);
-			glRotatef(rotation[1], 0.0, 1.0,0.0);
-			glRotatef(rotation[2], 0.0, 0.0,1.0);
 
 			// draw out each of the polygons needed for this object
 			// now need to call the proper draw elements
 			displayController();//this is responsible for initializing the correct display methods
-
+					
 		// initialize the gl_projection matrix -- this is useful for setting up perspective etc ...
 		// initialize our matrix for the final viewing using projection ... 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
 		// fov angle, aspect ratio = width / height, near z, far z
-		gluPerspective(15.0f, windowWidth / windowHeight, 0.01, 500.0);
+		gluPerspective(15.0f, windowWidth / windowHeight, 0.01, 1000.0);
 
 		// swap the buffers and bring the second one out from hiding
 		glutSwapBuffers();
@@ -75,9 +65,16 @@ namespace application {
 		// by rotating around the x axis by 90.0
 		// when we draw a z value, it will look like a y value and we don't need to worry about that particular case
 		// multiply the current matrix by 90, but only around the x axis
-		glRotatef(90.0, 1.0, 0.0, 0.0);
-		// scale our image for a second
+		// glTranslatef(0,0,-100);
+		glRotatef(90.0, 1.0, -1.0, 0.0);
+		glScalef(0.1,0.1,0.1);
 
+		// set up the proper rotations
+		glRotatef(rotation[0], 1.0, 0.0,0.0);
+		glRotatef(rotation[1], 0.0, 1.0,0.0);
+		glRotatef(rotation[2], 0.0, 0.0,1.0);
+		
+		// scale our image for a second
 		// checkout our current display type and then call the correct display from the display namespace
 		if (displayType == display::GRAYSCALE)
 			display::drawGrayscale();

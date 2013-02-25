@@ -33,6 +33,9 @@ class HeightField {
 		unsigned int getPoint(unsigned int x, unsigned int y);//return a single point's z value
 		unsigned int getHeight();//returns the height of the image
 		unsigned int getWidth();//returns the width
+		unsigned int getMaxZ();//returns the maxZ
+		unsigned int getMinZ();//returns the minZ
+		float getGrayscaleRatio();//returns the grayscale ratio for the color elements
 		GLfloat * getVertex(unsigned int x, unsigned int y);//grab a particular element
 
 	private://variables
@@ -40,6 +43,8 @@ class HeightField {
 		FieldType type;
 		unsigned int width;//width of the element
 		unsigned int height;//height of the map
+		unsigned int maxZ;//maximum z field
+		unsigned int minZ;//minimum z field 
 		unsigned int size;//this is the size of the array that we are working with		
 		unsigned int * data;//this is the data that we are storing for this particular image
 		GLfloat (*vertices)[3];//this is an array of all the vertices we need for now

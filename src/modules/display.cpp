@@ -32,12 +32,31 @@ namespace display {
 			Declare a bottom color, declare a top color
 			We are simply connecting triangles between elements
 			Need to scale the z element between all three -- ie: multiply z by a range to find the element
+			Need to scale it based upon how far in between we are
 		*/	
-
 		// glBegin(GL_TRIANGLE);
+		int height = int(heightField->getHeight()),
+			width = int(heightField->getWidth());
 
+		float ratio = 255 / (heightField->getMaxZ() - heightField->getMinZ()),
+			tempZ,//z for the current point
+			tempColor;//color for the individual element
 
-		
+		// for each row, connect the current point to the point below it and the point to the caddy-corner right of it	
+		// also need to consider the premises of when we are at the top of the image
+		for (int y = height - 2; y >= 1; --y) {
+
+			// loop through the x-axis to draw points
+			for (int x = 1; x < width - 2; ++x ) {
+
+				// connect the current point to the left most point
+				glVertex3f(x,y,heightField->getPoint(x,y));
+				glVertex3f(x-1, y, heightField->getPoint(x-1, y));
+				glVertex3f(x-1, y-1, heightField->getPoint(x-1, y-1));
+
+				// 
+			}
+		}	
 
 	}
 

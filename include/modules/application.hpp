@@ -46,6 +46,9 @@ namespace application {
 	// display controller is responsible for abstracting away the calls to our display elements
 	void displayController();
 
+	// display resizer -- responsible for applying resizing elements for each piece
+	void displayResizer();//responsible for getting element size and then transforming etc based on that
+
 
 }
 

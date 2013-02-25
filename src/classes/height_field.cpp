@@ -5,6 +5,8 @@ HeightField::HeightField(unsigned int height, unsigned int width, FieldType type
 	// size of the array
 	this->size = height * width;// in the future, when we want to work with things other than grayscale images, we can assume that 
 	this->data = new unsigned int[size];//this is the data to store the correct points
+	this->maxZ = 0;//initialize the maximum z value for now
+	this->minZ = 255;//initialize the minimum value for z
 
 	// initialize all elements
 	this->vertices = new GLfloat[size][3];
@@ -30,7 +32,12 @@ void HeightField::addPoint(unsigned int x, unsigned int y, unsigned int z) {
 	this->vertices[index][1] = y;
 	this->vertices[index][2] = z;
 
+	// make sure that we don't need to reset the current z value
+	if (z > this->maxZ) this->maxZ = z;
 
+	// make sure that this is not less than the current minium z value
+	if (z < this->minZ) this->minZ = z;
+	
 }
 
 // grab a vertex array from a certain position
@@ -59,6 +66,24 @@ unsigned int HeightField::getHeight() {
 unsigned int HeightField::getWidth() {
 
 	return this->width;
+}
+
+unsigned int HeightField::getMaxZ() {
+
+	return this->maxZ;
+
+}
+
+unsigned int HeightField::getMinZ() {
+
+	return this->minZ;
+
+}
+
+// this is to help normalize and assist in grayscale controls -- so that we have a decent ratio 
+float HeightField::getGrayscaleRatio() {
+
+	return 255 / (this->maxZ - this->minZ);// a perfect ratio 
 }
 
 inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {

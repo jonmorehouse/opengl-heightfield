@@ -14,9 +14,9 @@
 // rotate the object rectangle -- this is done after the camera look up
 float rotation[3] = {0.0, 0.0, 0.0}, 
   // current translation of the current object
-  translation[3] = {1.0, 1.0, -100.0},
+  translation[3] = {1.0, 1.0, -200.0},
   // scale of the actual object
-  scale[3] = {0.1, 0.1, 1},
+  scale[3] = {0.9, 0.9, 1},
   // this is the scalar that we will multiply by the rotation element
   cameraDistance = 50.0,
   // we want to be able to rotate the camera around the x axis to go above and beyond or around the y element
@@ -28,7 +28,7 @@ int windowHeight = 600,
   windowWidth = 600;
 
 // display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
-display::DisplayType displayType = display::WIREFRAME;//initialize the type of application we are going to draw out
+display::DisplayType displayType = display::COLOR;//initialize the type of application we are going to draw out
 
 // height field holder for this application
 HeightField * heightField = NULL;
