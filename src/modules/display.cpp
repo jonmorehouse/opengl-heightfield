@@ -22,7 +22,7 @@ namespace display {
 
 				// grab the proper color from the heightfield
 				color = heightField->getGrayscaleColor(x,y);
-				
+
 				// now that the color has been determined, draw it out
 				glColor3f(color, color, color);
 
@@ -32,41 +32,6 @@ namespace display {
 		} //end of the y for loop
 
 		glEnd();//end the points drawing
-	}
-
-
-	void drawGrayscale() {
-
-		/*
-			Declare a bottom color, declare a top color
-			We are simply connecting triangles between elements
-			Need to scale the z element between all three -- ie: multiply z by a range to find the element
-			Need to scale it based upon how far in between we are
-		*/	
-		// glBegin(GL_TRIANGLE);
-		int height = int(heightField->getHeight()),
-			width = int(heightField->getWidth());
-
-		float ratio = 255 / (heightField->getMaxZ() - heightField->getMinZ()),
-			tempZ,//z for the current point
-			tempColor;//color for the individual element
-
-		// for each row, connect the current point to the point below it and the point to the caddy-corner right of it	
-		// also need to consider the premises of when we are at the top of the image
-		for (int y = height - 2; y >= 1; --y) {
-
-			// loop through the x-axis to draw points
-			for (int x = 1; x < width - 2; ++x ) {
-
-				// connect the current point to the left most point
-				glVertex3f(x,y,heightField->getPoint(x,y));
-				glVertex3f(x-1, y, heightField->getPoint(x-1, y));
-				glVertex3f(x-1, y-1, heightField->getPoint(x-1, y-1));
-
-				// 
-			}
-		}	
-
 	}
 
 	void drawWireframe() {
@@ -109,21 +74,69 @@ namespace display {
 		}
 	}
 
-	void drawColor() {
+	void grayscaleWorker(int x, int y) {
 
+		// responsible for drawing out and initializing an individual point for this drawing etc
+		int z = heightField->getPoint(x,y);
+		float color = heightField->getGrayscaleColor(x,y);
+
+		// actually draw out the element and change the points accordingly
+		glColor3f(color, color, color);
+		glVertex3f(x,y,z);
+	}	
+
+	void drawGrayscale() {
+
+		// cache the height / width elements for this particular looping system
+		int height = heightField->getHeight(),
+			width = heightField->getWidth(),
+			tempZ;//this is a temporary z to help save heightfield accesses
+
+		// cache a color variable so that we can dynamically change the vertex each time
+		float tempColor;
+
+		// start a matrix to help us if we need any transformations
 		glPushMatrix();
-			glColor3f(0.5,0.5,0.5);
-			glScalef(10,10,0);
-			glBegin(GL_POLYGON);
-				
-				glVertex3f(0,0,0);
-				glVertex3f(5,0,0);
-				glVertex3f(5,5,0);
-				glVertex3f(0,5,0);
 
-			glEnd();	
+			for (int y = height - 2; y >= 1; --y) {
+
+				for (int x = 1; x < width - 2; ++x) {
+
+					// initialize the drawing of the top triangle strip
+					glBegin(GL_TRIANGLE_STRIP);
+
+						// initialize the drawing of each of the different elements
+						grayscaleWorker(x-1, y);
+						grayscaleWorker(x-1, y+1);
+						grayscaleWorker(x,y);
+						grayscaleWorker(x,y+1);
+						grayscaleWorker(x+1, y+1);
+						grayscaleWorker(x+1, y);
+
+					glEnd();
+
+					// initialize the drawing of the bottom strip
+					glBegin(GL_TRIANGLE_STRIP);
+
+						grayscaleWorker(x-1, y);
+						grayscaleWorker(x-1, y-1);
+						grayscaleWorker(x,y);
+						grayscaleWorker(x,y-1);
+						grayscaleWorker(x+1, y-1);
+						grayscaleWorker(x+1, y);
+
+					glEnd();
+
+				}	
+			}
 
 		glPopMatrix();
+
+	}
+
+	void drawColor() {
+
+		// only for temporary testing etc for the drawing elements ettcc..
 
 
 	}

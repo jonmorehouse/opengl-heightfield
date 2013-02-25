@@ -30,6 +30,7 @@ namespace display {
 
 	// draw out grayscale gradient for this particular element
 	void drawGrayscale();
+	void grayscaleWorker(int x, int y);//responsible for drawing out a single vertex etc for this element
 
 	// void draw wireframe of the mesh etc
 	void drawWireframe();
