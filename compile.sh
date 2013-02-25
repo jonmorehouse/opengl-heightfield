@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this is a short bash script to programmatically create an animation from screenshots using imagemagick
-interval=5
+interval=20
 
 # create filler gap images
 convert screenshots/*.png -delay $interval -morph $interval temp/%05d.morph.png
