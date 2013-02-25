@@ -11,7 +11,9 @@
 #include <GLUT/glut.h>
 
 // require our global persistent heightfield object
-extern HeightField * heightField;	
+extern HeightField * heightField;//image object
+extern const int WIREFRAME_DENSITY;//wireframe density as determined in the main file
+
 
 namespace display {
 
