@@ -142,22 +142,7 @@ namespace interaction {
 			if (cameraRotation[1] > 360) //reset it!
 				cameraRotation[1] -= 360;//subtract the 360 from it	
 		} 
-		// now listen for the j key to move left
-		if (key == 106) {
-
-			// subtract so that the globe rotates forward, kind of out of the screen ... 
-			cameraRotation[0] -= delta;
-
-			// if the angle becomes less than 0, we need to reset the circle by adding 2pi
-			if (cameraRotation[0] < 0) // need to reset the element
-				cameraRotation[0] += 360;
-		}
-
-
-
-
 
 		glutPostRedisplay();
-		
 	}
 }

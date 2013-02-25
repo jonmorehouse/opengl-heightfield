@@ -105,9 +105,9 @@ int main (int argc, char ** argv) {
   glutIdleFunc(application::idle);
   glutSpecialFunc(interaction::keyPress);//enable the keypress handling
 
-  // glutMotionFunc(interaction::mousedrag);
-  // glutPassiveMotionFunc(interaction::mouseidle);
-  // glutMouseFunc(interaction::mousebutton);
+  glutMotionFunc(interaction::mousedrag);
+  glutPassiveMotionFunc(interaction::mouseidle);
+  glutMouseFunc(interaction::mousebutton);
 
   // enable 3d buffering / z-buffer
   glEnable(GL_DEPTH_TEST);

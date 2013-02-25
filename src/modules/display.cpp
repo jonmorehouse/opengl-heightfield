@@ -126,7 +126,6 @@ namespace display {
 						grayscaleWorker(x+1, y);
 
 					glEnd();
-
 				}	
 			}
 
@@ -138,7 +137,7 @@ namespace display {
 
 		// only for temporary testing etc for the drawing elements ettcc..
 
+		// will be responsible for drawing the element in colors etc
 
 	}
-
 }
