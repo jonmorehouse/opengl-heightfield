@@ -36,3 +36,32 @@ Features to Implement
 4.) Run the screenshot application in parallel to main application. This is currently done blockingly and can halt some animations
 5.) Integrate shadows on the elements and the ability to change colors dynamically
 
+
+Structure
+=
+
+Modules
+-
+
+Interaction
+
+	-	responsible for all user interaction and updating global positioning states	
+	-	uses provided boilerplate and implements some of our own functions
+
+Application
+
+	-	controls application flow
+	-	calls upon display to display the proper heightfields-	responsible for putting primary transformations on the image being drawn
+
+Display
+
+	-	responsible for drawing out the proper image based on different states
+	-	is controlled by the application::displayController
+
+Image
+
+	-	uses provided boilerplate for saving our screenshots
+	-	screenshotController saves the screenshots accordingly
+	-	change this method to speed up / slow down the elements etc
+	-	this needs to be asynchronous / parallel in the future
+

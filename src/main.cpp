@@ -53,7 +53,7 @@ void heightFieldInit(char * filename) {
 
   // initialize all of our points etc
   unsigned int height = image->nx,
-    width = image->ny,
+    width = image->ny,//cache the height / width of the image
     intensity;//current pixel intensity from 0 to 256
 
   // set up the height field object for global use
@@ -89,7 +89,9 @@ int main (int argc, char ** argv) {
   // means that we want to capture screen shots every half second 
   if (argc == 3) {
 
+    // enable screenshot mode
     image::screenShots = true;
+    // the third argument is the image filename
     heightFieldInit(argv[2]);
 
   }
@@ -118,6 +120,7 @@ int main (int argc, char ** argv) {
   glutIdleFunc(application::idle);
   glutSpecialFunc(interaction::keyPress);//enable the keypress handling
 
+  // enable our mouse drag function for controlling the heightfield image
   glutMotionFunc(interaction::mousedrag);
   glutPassiveMotionFunc(interaction::mouseidle);
   glutMouseFunc(interaction::mousebutton);
