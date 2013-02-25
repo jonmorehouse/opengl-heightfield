@@ -3,6 +3,10 @@
 /* Write a screenshot to the specified filename */
 namespace image {
 
+  bool screenShots = false;
+  int screenshotCounter = 0;//screenshot name
+  int counter = 0;//initialize the counter
+
   void saveScreenshot (char * filename) {
 
     int x, y;
@@ -37,6 +41,26 @@ namespace image {
       printf("Could not save image");
 
     pic_free(image);
+
+  }
+
+  void screenshotController() {
+
+    // 
+    counter++;//iterate the counter
+
+    if (counter % 30 != 0) return;
+
+    // iterate the screenshot counter up one and then save the image
+    char filename[20];
+    // since we're saving a valid screen shot, we need to iterate up once
+    screenshotCounter++;
+
+    //create the proper filename and then send it to our screenshot element 
+    sprintf(filename,"screenshots/%u.jpg", screenshotCounter);
+
+    saveScreenshot(filename);
+
 
   }
 

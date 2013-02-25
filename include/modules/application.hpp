@@ -3,6 +3,7 @@
 
 // initialize our other namespace functions for heightfield data and the display methods that will actually display our imagery
 #include "classes/height_field.hpp"
+#include "modules/image.hpp"
 #include "modules/display.hpp"
 
 // initialize standard libraries needed if they were not already included

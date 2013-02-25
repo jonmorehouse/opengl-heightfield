@@ -81,11 +81,22 @@ int main (int argc, char ** argv) {
 
     // Print error message
     printf("Usage: %s example.jpg\n", argv[0]);
+    printf("Usage: %s -s example.jpg\n", argv[0]);
     exit(1);
 
   }
 
-  heightFieldInit(argv[1]);//initialize the image etc
+  // means that we want to capture screen shots every half second 
+  if (argc == 3) {
+
+    image::screenShots = true;
+    heightFieldInit(argv[2]);
+
+  }
+
+  // otherwise the heightfield is the second element
+  else heightFieldInit(argv[1]);//initialize the image etc
+
 
   // set up the initializer function for glut
   glutInit(&argc, argv);
@@ -99,7 +110,7 @@ int main (int argc, char ** argv) {
   // set the window position
   glutInitWindowPosition(100, 100);
   // name the window etc ... 
-  glutCreateWindow("Assignment 1: Height Field");
+  glutCreateWindow("Image Height Field");
 
   // set up the main display function
   glutDisplayFunc(application::display);
@@ -121,7 +132,4 @@ int main (int argc, char ** argv) {
   // just need our viewport set to 0,0,w,h
   // now enter the main glut loop 
   glutMainLoop();
-     
-  // image::saveScreenshot("./test.jpf");
-
 }

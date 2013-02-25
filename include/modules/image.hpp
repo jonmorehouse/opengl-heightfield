@@ -17,8 +17,12 @@ extern Pic * currentImage;
 
 namespace image {
 
-	void saveScreenshot (char * filename);
-	
+	extern bool screenShots;//whether or not to take screenshots right now
+	extern int counter;//this is the current counter etc, iterates and allows for a screenshot every 30 calls
+	extern int screenshotCounter;//what screenshot we are currently on
+
+	void saveScreenshot (char * filename);//
+	void screenshotController();//runs the screenshot controller	
 }
 
 #endif

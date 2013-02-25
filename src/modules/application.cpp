@@ -54,6 +54,9 @@ namespace application {
 		// swap the buffers and bring the second one out from hiding
 		glutSwapBuffers();
 
+		// check if we need to run the screenshot program etc
+		image::screenshotController();//run the controller
+
 	}
 
 	// display controller is where special cases in the future can go
