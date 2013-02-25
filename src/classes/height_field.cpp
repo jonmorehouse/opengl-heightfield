@@ -80,6 +80,7 @@ unsigned int HeightField::getMinZ() {
 
 }
 
+// get the index for the particular element in the array
 inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {
 
 	unsigned int index = (y * this->width) + x;
