@@ -14,7 +14,7 @@
 // rotate the object rectangle -- this is done after the camera look up
 float rotation[3] = {0.0, 0.0, 0.0}, 
   // current translation of the current object
-  translation[3] = {0.0, 0.0, -200.0},
+  translation[3] = {0.0, 0.0, -300.0},
   // scale of the actual object
   scale[3] = {0.9, 0.9, 1},
   // this is the scalar that we will multiply by the rotation element

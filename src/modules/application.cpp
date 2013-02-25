@@ -73,6 +73,15 @@ namespace application {
 		glRotatef(rotation[1], 0.0, 1.0,0.0);
 		glRotatef(rotation[2], 0.0, 0.0,1.0);
 		
+		// now that we have drawn out the element, lets rotate it about the z axis to help
+		glRotatef(90, -1, 0,0);
+
+		// now translate the rotated object down to the left to center it
+		glTranslatef(int(heightField->getWidth())*-0.5, 0, int(heightField->getHeight()) * -0.25);
+
+		//now we want to rotate the field so we can see it a little bit better than before etc	
+		glRotatef(30, 1, 0, 0);
+
 		// scale our image for a second
 		// checkout our current display type and then call the correct display from the display namespace
 		if (displayType == display::GRAYSCALE)
@@ -87,9 +96,20 @@ namespace application {
 		else if (displayType == display::COLOR)
 			display::drawColor();
 
+
+
 		// initialize any other elements etc	
 		glPopMatrix();//stop the z/y reversing here
 
 	}
 
+	void imageNormalizer() {
+
+
+		// this is responsible for scaling the image so that it has the perfect dimensions etc	
+		// we are going to assume that the perfectly fitting image is 
+		// the perfectly fitting image is the 
+
+
+	}
 }

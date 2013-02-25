@@ -49,7 +49,6 @@ namespace application {
 	// display resizer -- responsible for applying resizing elements for each piece
 	void displayResizer();//responsible for getting element size and then transforming etc based on that
 
-
 }
 
 #endif 	
