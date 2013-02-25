@@ -49,7 +49,7 @@ namespace application {
 		glLoadIdentity();
 
 		// fov angle, aspect ratio = width / height, near z, far z
-		gluPerspective(15.0f, windowWidth / windowHeight, 0.01, 1000.0);
+		gluPerspective(10.0f, windowWidth / windowHeight, 0.01, 1000.0);
 
 		// swap the buffers and bring the second one out from hiding
 		glutSwapBuffers();
@@ -65,8 +65,7 @@ namespace application {
 		// by rotating around the x axis by 90.0
 		// when we draw a z value, it will look like a y value and we don't need to worry about that particular case
 		// multiply the current matrix by 90, but only around the x axis
-		// glTranslatef(0,0,-100);
-		glRotatef(90.0, 1.0, -1.0, 0.0);
+		glTranslatef(0,0,-100);
 		glScalef(0.1,0.1,0.1);
 
 		// set up the proper rotations

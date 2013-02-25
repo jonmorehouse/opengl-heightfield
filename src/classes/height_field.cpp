@@ -80,18 +80,26 @@ unsigned int HeightField::getMinZ() {
 
 }
 
-// this is to help normalize and assist in grayscale controls -- so that we have a decent ratio 
-float HeightField::getGrayscaleRatio() {
-
-	return 255 / (this->maxZ - this->minZ);// a perfect ratio 
-}
-
 inline unsigned int HeightField::getIndex(unsigned int x, unsigned int y) {
 
 	unsigned int index = (y * this->width) + x;
-	
+
 	return index;
 }
 
+// get the grayscale color etc
+float HeightField::getGrayscaleColor(unsigned int x, unsigned int y) {
+
+	float delta = this->maxZ - this->minZ;
 
 
+	return float(this->getPoint(x,y)) / delta;
+}
+
+// get the rgb color -- this is for color elements etc
+void HeightField::getRGBColor(unsigned int x, unsigned int y, float color[3]) {
+
+
+
+
+}

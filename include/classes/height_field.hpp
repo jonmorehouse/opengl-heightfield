@@ -35,7 +35,8 @@ class HeightField {
 		unsigned int getWidth();//returns the width
 		unsigned int getMaxZ();//returns the maxZ
 		unsigned int getMinZ();//returns the minZ
-		float getGrayscaleRatio();//returns the grayscale ratio for the color elements
+		float getGrayscaleColor(unsigned int x, unsigned int y);//return the color for that individual point
+		void getRGBColor(unsigned int x, unsigned int y, float color[4]);
 		GLfloat * getVertex(unsigned int x, unsigned int y);//grab a particular element
 
 	private://variables

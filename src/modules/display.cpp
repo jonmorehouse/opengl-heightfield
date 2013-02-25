@@ -8,14 +8,23 @@ namespace display {
 
 		// initialize points
 		glBegin(GL_POINTS);	
-
+		// initialize the point size etc	
 		glPointSize(30.0);//set the point size for each dot drawn
+
+		// cache a color array
+		float color;
 
 		// loop through each element and draw the correct point
 		for (int x = int(heightField->getWidth()) - 1; x >= 0; --x) {
 
 			// loop through each y value
 			for (int y = int(heightField->getHeight()) -1; y >= 0; --y) {
+
+				// grab the proper color from the heightfield
+				color = heightField->getGrayscaleColor(x,y);
+				
+				// now that the color has been determined, draw it out
+				glColor3f(color, color, color);
 
 				// grab the vertice and draw it on screen	
 				glVertex3fv(heightField->getVertex(x,y));//draw the proper vertex on screen	
@@ -102,21 +111,20 @@ namespace display {
 
 	void drawColor() {
 
-		// this is just a test element for now
-		glBegin(GL_TRIANGLE_STRIP);
+		glPushMatrix();
+			glColor3f(0.5,0.5,0.5);
+			glScalef(10,10,0);
+			glBegin(GL_POLYGON);
+				
+				glVertex3f(0,0,0);
+				glVertex3f(5,0,0);
+				glVertex3f(5,5,0);
+				glVertex3f(0,5,0);
 
-		glPolygonMode( GL_FRONT, GL_LINE );
-		glPolygonMode(GL_BACK, GL_LINE);
-		glDisable( GL_CULL_FACE );
-		glColor3f(255.0, 255.0, 255.0);
+			glEnd();	
 
-		glVertex3f(0.0, 0.0, 0.0);
-		glVertex3f(0.0, 0.0, 4.0);
-		glVertex3f(4.0, 0.0, 4.0);
-		glVertex3f(4.0, 0.0, 0.0);
-		glVertex3f(0.0,0.0,0.0);
+		glPopMatrix();
 
-		glEnd();
 
 	}
 
