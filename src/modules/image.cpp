@@ -49,6 +49,7 @@ namespace image {
     // 
     counter++;//iterate the counter
 
+    // only take screenshots if we are on an interval of 30
     if (counter % 30 != 0) return;
 
     // iterate the screenshot counter up one and then save the image
@@ -59,9 +60,8 @@ namespace image {
     //create the proper filename and then send it to our screenshot element 
     sprintf(filename,"screenshots/%u.jpg", screenshotCounter);
 
+    // save screenshots 
     saveScreenshot(filename);
-
-
   }
 
 }

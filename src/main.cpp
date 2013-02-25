@@ -97,7 +97,6 @@ int main (int argc, char ** argv) {
   // otherwise the heightfield is the second element
   else heightFieldInit(argv[1]);//initialize the image etc
 
-
   // set up the initializer function for glut
   glutInit(&argc, argv);
 
