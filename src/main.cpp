@@ -28,7 +28,7 @@ int windowHeight = 600,
   windowWidth = 600;
 
 // wireframe density
-const int WIREFRAME_DENSITY = 10;//helps for wireframe densitys to ensure that we are not drawing a blob of lines
+unsigned int wireframeDensity = 10;//helps for wireframe densitys to ensure that we are not drawing a blob of lines
 
 // display type is changed through the interaction namespace and is useful for helping us describe what type of displaying we want
 display::DisplayType displayType = display::GRAYSCALE;//initialize the type of application we are going to draw out

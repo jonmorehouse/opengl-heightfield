@@ -26,6 +26,7 @@ extern float scale[3];// set up and initialized in main file
 extern float cameraRotation[2];//load the current camera rotation for the point of view
 extern display::DisplayType displayType;//initialized in the main function this is what controls the wireframe, grayscale and points element and any further modes
 	// note the displayMap and currentDisplay that are encapsulated in this namespace for controlling the current view
+extern unsigned int wireframeDensity;//this is the wireframe density
 
 namespace interaction {
 

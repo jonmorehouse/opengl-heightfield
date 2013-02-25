@@ -156,6 +156,18 @@ namespace interaction {
 		// set the global display type to properly change according to our display type map as declared before
 		displayType = displayTypeMap[currentDisplay];
 
+		// we now want to listen for any changes to the wireframe density by listening for - / + signs etc
+		if (key == 45 && wireframeDensity > 3) {
+
+			wireframeDensity -= 2;
+
+		}	
+
+		if (key == 43 && wireframeDensity < float(heightField->getWidth()) *0.20) {
+
+			wireframeDensity += 2;	
+		}
+
 		glutPostRedisplay();
 		
 	}

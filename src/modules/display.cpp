@@ -40,21 +40,20 @@ namespace display {
 		int height = int(heightField->getHeight()),
 			width = int(heightField->getWidth());	
 
-
 		// make sure that we are drawing a white wireframe
 		glColor3f(1,1,1);
 
 		// want to loop through each row, stopping one from the bottom
-		for (int y = height - WIREFRAME_DENSITY -1; y >= WIREFRAME_DENSITY; y = y-WIREFRAME_DENSITY ) {
+		for (int y = height - wireframeDensity -1; y >= wireframeDensity; y = y-wireframeDensity ) {
 			// we want to circle for each element in the next for loop and counter-clockwise add our vertices to the point
-			for (int x = WIREFRAME_DENSITY + 1; x < width - WIREFRAME_DENSITY; x = x + WIREFRAME_DENSITY) {
+			for (int x = wireframeDensity + 1; x < width - wireframeDensity; x = x + wireframeDensity) {
 
 				// draw out the top loops
 				glBegin(GL_LINE_LOOP);
 
 					glVertex3f(x,y,heightField->getPoint(x,y));
-					glVertex3f(x-WIREFRAME_DENSITY, y, heightField->getPoint(x-WIREFRAME_DENSITY,y));
-					glVertex3f(x-WIREFRAME_DENSITY, y+ WIREFRAME_DENSITY, heightField->getPoint(x-WIREFRAME_DENSITY,y+WIREFRAME_DENSITY));	
+					glVertex3f(x-wireframeDensity, y, heightField->getPoint(x-wireframeDensity,y));
+					glVertex3f(x-wireframeDensity, y+ wireframeDensity, heightField->getPoint(x-wireframeDensity,y+wireframeDensity));	
 
 				glEnd();
 			}
