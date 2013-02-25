@@ -4,3 +4,5 @@ images/
 resources/
 current
 screenshots*
+temp/
+*.mp4
