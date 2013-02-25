@@ -8,19 +8,24 @@
 
 */
 
+// initialize our proper libraries for this application
+#include "classes/height_field.hpp"	
+#include "modules/display.hpp"
+// initialize the standard gl libraries if they are not currently active
 #include <stdlib.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <pic.h>
-#include "classes/height_field.hpp"
 
+// initialize the heightfields and other elements that are declared externally etc... check the main.cpp file
 extern HeightField * heightField;//set up and initialized in our main init function
 extern float rotation[3];// set up and initialized in main file
 extern float translation[3];// set up and initialized in main file
 extern float scale[3];// set up and initialized in main file
 extern float cameraRotation[2];//load the current camera rotation for the point of view
-
+extern display::DisplayType displayType;//initialized in the main function this is what controls the wireframe, grayscale and points element and any further modes
+	// note the displayMap and currentDisplay that are encapsulated in this namespace for controlling the current view
 
 namespace interaction {
 
@@ -33,6 +38,11 @@ namespace interaction {
 		g_iLeftMouseButton,
 		g_iMiddleMouseButton,
 		g_iRightMouseButton;
+
+	extern int currentDisplay;//what the current display element consists of! 
+	extern display::DisplayType displayTypeMap[3];//this is a mapper of the currently available display types
+
+
 
 	// mouse idle is useful for when the mouse is just sitting somewhere
 	void mouseidle(int x, int y); 

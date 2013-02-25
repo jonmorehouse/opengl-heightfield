@@ -13,6 +13,10 @@ namespace interaction {
 		g_iMiddleMouseButton = 0,
 		g_iRightMouseButton = 0;
 
+	// implement my own custom mapping system for switching between the display states etc
+	int currentDisplay = 0;
+	display::DisplayType displayTypeMap[3] = {display::GRAYSCALE, display::POINT, display::WIREFRAME};
+
 	void mouseidle(int x, int y) {
 	  g_vMousePos[0] = x;
 	  g_vMousePos[1] = y;
@@ -136,13 +140,23 @@ namespace interaction {
 
 		// set up the rotation of the camera about the x axis -- this is the equivalent of swinging the camera around the on the horizontal axis	
 		if (key == 107) {//k key -- vim key mappings! -- rotate left
-
-			cameraRotation[1] += delta;
-
-			if (cameraRotation[1] > 360) //reset it!
-				cameraRotation[1] -= 360;//subtract the 360 from it	
+			
+			// make sure we don't need a reset etc
+			if (currentDisplay == 0) currentDisplay = 2;
+			else --currentDisplay;//if not, just subtract one from the current
+			
 		} 
+		// now listen for the j key to move left
+		if (key == 106) {
+
+			if(currentDisplay == 2) currentDisplay = 0;
+			else ++currentDisplay;
+		}
+
+		// set the global display type to properly change according to our display type map as declared before
+		displayType = displayTypeMap[currentDisplay];
 
 		glutPostRedisplay();
+		
 	}
 }
